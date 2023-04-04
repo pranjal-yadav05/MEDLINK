@@ -56,7 +56,10 @@ $conn=mysqli_connect('localhost','root','','medlink');
 $title=($_POST['titl']);
 $name=($_POST['nam']);
 $post=($_POST['posst']);
-$dat=date("h:i a, d/m/y");
+
+    date_default_timezone_set('Asia/Kolkata');
+    
+ $dat=date("h:i a, d/m/y");
  if(isset($_POST['butt'])){
     $query="INSERT INTO posts(post_id,post_name,post_user,post,post_date) VALUES('','$title','$name','$post','$dat')";
     $result=mysqli_query($conn,$query);
