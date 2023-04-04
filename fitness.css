@@ -1,0 +1,99 @@
+.bar{
+    text-align: center;
+    align-self: center;
+}
+h1{
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 8vh;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    top:0;
+}
+body{
+    background-color: white;
+    text-align: left;
+    background-image: url("back.jpg");
+    background-size:cover;
+   
+}
+.but{
+    border:2px solid black;
+    margin-right: -2px;
+    margin-left: -2px;
+    background-color: none;
+    font-size: 3vh;
+    font-style: oblique;
+    padding:5px;
+
+}
+.but:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.but:active{
+    background-color: rgb(157, 234, 238);
+    color: black;
+}
+.top{
+   
+    border-radius: 5px;
+    
+    text-align: right;
+}
+.top i{
+    margin:0 5px;
+
+}
+.learn{
+    bottom:0;
+    
+    font-size: 3.5vh;
+    border-top: 2px solid black;
+    text-align: center;
+    width: 100vw;
+    margin-left: 0;
+    background-color: black;
+    color:white;
+    
+}
+.navi{
+    border-bottom:1px solid black;
+    
+}
+.lm{
+    border:0;
+    background-color: black;
+    color:white;
+    font-size: 2vh;
+}
+
+.content{
+    padding-top: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    overflow-y: scroll;
+}
+.pr{
+    margin:20px 20px;
+    border:1px solid black;
+    border-radius: 10px;
+}
+
+.plus{
+    text-align: center;
+}
+.fetch{
+    border: 2px solid black;
+    border-radius: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+.title{
+    margin-left: 5px;
+    font-family: 'Oswald', sans-serif;
+}
+.anchor{
+    text-decoration: none;
+
+}
