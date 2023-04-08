@@ -1,0 +1,135 @@
+.bar{
+    text-align: center;
+    align-self: center;
+}
+h1{
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 8vh;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    top:0;
+    background-image: url("background.jpg");
+}
+body{
+    background-color: white;
+    text-align: left;
+    
+    background-size:cover;
+    margin:0;
+    
+}
+.but{
+    border:2px solid black;
+    margin-right: -2px;
+    margin-left: -2px;
+    background:none;
+    font-size: 2.5vh;
+    font-style: oblique;
+    padding:10px;
+    color:white;
+}
+.but:hover{
+    background-color: black;
+    color: rgb(152, 246, 0);
+    cursor: pointer;
+}
+.but:active{
+    background-color: black;
+    color: rgb(241, 0, 0);
+}
+.top{
+   
+    border-radius: 5px;
+    
+    text-align: right;
+}
+.top i{
+    margin:0 5px;
+
+}
+.learn{
+    bottom:0;
+    
+    font-size: 3.5vh;
+    border-top: 2px solid black;
+    text-align: center;
+    width: 100vw;
+    margin-left: 0;
+    background-color: black;
+    color:white;
+    
+}
+.navi{
+    border-bottom:1px solid black;
+    
+}
+.lm{
+    border:0;
+    background-color: black;
+    color:white;
+    font-size: 2vh;
+ 
+}
+
+.content{
+    padding-top: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    overflow-y: scroll;
+    margin-left:10px;
+    margin-right:10px;
+   
+}
+.pr{
+    margin:20px 20px;
+    border:1px solid black;
+    border-radius: 10px;
+}
+
+.plus{
+    text-align: center;
+}
+.plus:hover{
+    color:blueviolet;
+}
+.fetch{
+    border: 2px solid black;
+    border-radius: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    padding: 5px 5px;
+    background-color: black;
+    opacity: 0.5;
+    color:white;
+}
+.title{
+    margin-left: 5px;
+    font-family: 'Oswald', sans-serif;
+}
+.anchor{
+    text-decoration: none;
+    color:white;    
+}
+.img{
+    background-image: url(profile.png);
+    
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.anchor:hover{
+    background-color: black;
+    color: rgb(152, 246, 0);
+    cursor: pointer;
+}
+.anchor:active{
+    color: rgb(241, 0, 0);
+}
+.header{
+    background-color: black;
+    background-size:100%;
+}
+#f25{
+    color:white;
+}
