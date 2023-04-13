@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital@1&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
-<meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="index.css" rel="stylesheet">
-    <link rel="icon" href="head.png">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="icon" id="icon" type="image/png" href="image1.png">
+
+    <script src="favicon.js"></script>
+   
     <title>Medlink</title>
 </head>
 <body>
@@ -33,9 +37,18 @@
     </nav>
     </div>
 </div>
+
+        <footer class="site-footer">
+            <strong>&#169; 2023 MedLink</strong></br>
+            <i>Credits</i>: Background Image by 
+            <a style="text-decoration:none; color=aqua"href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
+                Freepik
+            </a>
+        </footer>
+
     <div class="content">
     <?php
-    $conn=mysqli_connect('localhost','root','','medlink');
+    $conn=mysqli_connect('localhost:3306','root','','');
     $result=mysqli_query($conn,"SELECT * FROM `posts`");
     while($row=mysqli_fetch_assoc($result))
     {   
@@ -55,9 +68,7 @@
     ?>
     </div>  
 </div>
-<div  class="learn">
-   
-    <div name="more" class="lm">	&#169; copyright 2023, all rights reserved</div>
-</div>
+        
 </body>
+
 </html>

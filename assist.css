@@ -47,7 +47,7 @@ body{
     margin:0 5px;
 
 }
-.learn{
+footer {
     bottom:0;
     
     font-size: 3.5vh;
@@ -63,7 +63,7 @@ body{
     border-bottom:1px solid black;
     
 }
-.lm{
+.site-footer{
     border:0;
     background-color: black;
     color:white;
