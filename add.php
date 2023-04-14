@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
     <link href="styles.css" rel="stylesheet">
-    <link rel="icon" id="icon" type="image/png" href="image1.png">
+    <link rel="icon" id="icon" type="image/png" href="/images/MedLinkAnimatedFavicon1.png">
 
     <script src="favicon.js"></script>
 
@@ -28,7 +28,22 @@
     margin-right: 0;
     }
     body{
-        background-image: url("img.jpg");
+        background-image: url("/images/tablet-medical-equipment.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    /*
+    object-fit: cover;
+    
+    background-size: contain;
+    */
+
+    /*
+    background-image: url("img.jpg");
+    */
     }
     .sub{
         background-color:blue;
@@ -82,8 +97,7 @@
 <body>
 <h1>MEDLINK</h1> 
 <br>
-<div class="design">
-<h2>Hey! you can enter new post here:<h2>
+<div class="design"><h2>Posting as <u>*username*</u><h2>
 <form class="new" autocomplete="off" method="post">
 Name : <input type="text" name="nam" class="inp"><br><br>
 Title: <input type="text" name="titl" class="inp"><br><br>
@@ -107,3 +121,6 @@ $dat=date("h:i a, d/m/y");
 
 </body>
 </html>
+<!-- Commented Code begins...
+<h2>Hey! you can enter new post here:<h2>
+    ...Commented Code ends-->

@@ -10,19 +10,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="styles.css" rel="stylesheet">
-    <link rel="icon" id="icon" type="image/png" href="image1.png">
+    <link rel="icon" id="icon" type="image/png" href="/images/MedLinkAnimatedFavicon1.png">
 
     <script src="favicon.js"></script>
 
-    <title>Medlink</title>
+    <title>MedLink</title>
 </head>
 <body>
 <div class="header">
 <nav class="top">
     <h1>MEDLINK</h1>  
 
-    <i class="fa fa-envelope" style="font-size:30px"></i>
+    <!-- Inbox Label -->
+    <i id="f25" class="fa fa-envelope" style="font-size:30px"></i>
+    <!-- Archive Label -->
+    <i id="f25" class="fa fa-inbox" style="font-size:35px"></i><i class="fa fa-envelope" style="font-size:30px"></i>
     <i class="fa fa-inbox" style="font-size:35px"></i>
     </nav> 
     <div class="navi">
@@ -42,7 +46,7 @@
         <footer class="site-footer">
             <strong>&#169; 2023 MedLink</strong></br>
             <i>Credits</i>: Background Image by 
-            <a style="text-decoration:none; color=aqua"href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
+            <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
                 Freepik
             </a>
         </footer>

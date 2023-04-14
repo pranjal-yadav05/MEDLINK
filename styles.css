@@ -1,3 +1,24 @@
+/* styles for screens smaller than 600px */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* styles for screens between 600px and 900px */
+@media (min-width: 600px) and (max-width: 900px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* styles for screens larger than 900px */
+@media (min-width: 900px) {
+  body {
+    font-size: 20px;
+  }
+}
+
 .bar{
     text-align: center;
     align-self: center;
@@ -13,11 +34,24 @@ h1{
     background-image: url("background.jpg");
 }
 body{
-    background-color: white;
+    background-image: url("/images/tablet-medical-equipment.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    /*
+    object-fit: cover;
+    
+    background-size: contain;
+    */
+
+    /*background-color: white;
     text-align: left;
     
     background-size:cover;
-    margin:0;
+    margin:0;*/
     
 }
 .but{
@@ -26,7 +60,7 @@ body{
     margin-left: -2px;
     background:none;
     font-size: 2.5vh;
-    font-style: oblique;
+    /*font-style: oblique;*/
     padding:10px;
     color:white;
 }
@@ -71,6 +105,22 @@ footer {
     color:white;
     font-size: 2vh;
  
+}
+
+.whlink {
+    color: white;
+    text-decoration: none;
+}
+
+.whlink:hover{
+    background-color: black;
+    color: rgb(152, 246, 0);
+    cursor: pointer;
+}
+
+.whlink:active{
+    background-color: black;
+    color: rgb(241, 0, 0);
 }
 
 .content{
