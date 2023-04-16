@@ -23,6 +23,46 @@
     text-align: center;
     align-self: center;
 }
+
+.header{
+    background-color: black;
+    background-size:100%;
+}
+
+.logo_position {
+    position: absolute;
+    left: 50%;
+    /*top: 50%;*/
+    text-align: center;
+    display: flex;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    /*align-self: center;*/
+    /*vertical-align: middle;*/
+    align-content: center;
+    border-style: none;
+}
+
+.login-modal-btn {
+    cursor: pointer;
+    outline: 0px;
+    background-color: #273239;
+    color: white;
+    font-family: var(--font-primary);
+    padding: 8px 27px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none !important;
+    margin-right: 20px;
+    border: 0px;
+    white-space: nowrap;
+}
+
+.p-relative {
+    position: relative;
+}
+
 h1{
     text-align:center;
     font-family: 'Oswald', sans-serif;
@@ -33,6 +73,7 @@ h1{
     top:0;
     background-image: url("background.jpg");
 }
+
 body{
     background-image: url("/images/tablet-medical-equipment.jpg");
     background-size: cover;
@@ -52,9 +93,24 @@ body{
     
     background-size:cover;
     margin:0;*/
-    
 }
-.but{
+
+.form-btn {
+    cursor: pointer;
+    outline: 0px;
+    background-color: #273239;
+    color: white;
+    font-family: var(--font-primary);
+    padding: 8px 27px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    margin-right: 20px;
+    border: 0px;
+    white-space: nowrap;
+}
+
+.Button{
     border:2px solid black;
     margin-right: -2px;
     margin-left: -2px;
@@ -64,25 +120,27 @@ body{
     padding:10px;
     color:white;
 }
-.but:hover{
+
+.Button:hover{
     background-color: black;
     color: rgb(152, 246, 0);
     cursor: pointer;
 }
-.but:active{
+
+.Button:active{
     background-color: black;
     color: rgb(241, 0, 0);
 }
+
 .top{
-   
     border-radius: 5px;
-    
     text-align: right;
 }
+
 .top i{
     margin:0 5px;
-
 }
+
 footer {
     bottom:0;
     
@@ -93,18 +151,17 @@ footer {
     margin-left: 0;
     background-color: black;
     color:white;
-    
 }
+
 .navi{
     border-bottom:1px solid black;
-    
 }
+
 .site-footer{
     border:0;
     background-color: black;
     color:white;
     font-size: 2vh;
- 
 }
 
 .whlink {
@@ -128,9 +185,9 @@ footer {
     font-family: 'IBM Plex Sans', sans-serif;
     overflow-y: scroll;
     margin-left:10px;
-    margin-right:10px;
-   
+    margin-right:10px;   
 }
+
 .pr{
     margin:20px 20px;
     border:1px solid black;
@@ -140,9 +197,11 @@ footer {
 .plus{
     text-align: center;
 }
+
 .plus:hover{
     color:blueviolet;
 }
+
 .fetch{
     border: 2px solid black;
     border-radius: 10px;
@@ -152,34 +211,45 @@ footer {
     opacity: 0.5;
     color:white;
 }
+
 .title{
     margin-left: 5px;
     font-family: 'Oswald', sans-serif;
 }
+
 .anchor{
     text-decoration: none;
-    color:white;    
+    color:white;*/
+    border:2px solid black;
+    margin-right: -2px;
+    margin-left: -2px;
+    background:none;
+    font-size: 2.5vh;
+    /*font-style: oblique;*/
+    padding:10px;
+    color:white;
 }
+
 .img{
     background-image: url(profile.png);
-    
 }
+
 html, body {
     max-width: 100%;
     overflow-x: hidden;
 }
+
 .anchor:hover{
     background-color: black;
     color: rgb(152, 246, 0);
     cursor: pointer;
 }
+
 .anchor:active{
+    background-color: black;
     color: rgb(241, 0, 0);
 }
-.header{
-    background-color: black;
-    background-size:100%;
-}
+
 #f25{
     color:white;
 }

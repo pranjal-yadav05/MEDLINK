@@ -1,0 +1,70 @@
+    <?php
+        $conn = new mysqli('localhost', 'root', '12345678', 'MedLink');
+
+        // Prepare the SQL query
+        $stmt = $conn->prepare("INSERT INTO mytable (paragraph) VALUES (?)");
+
+        // Sanitize the user input
+        $paragraph = mysqli_real_escape_string($conn, $_POST['paragraph']);
+
+        // Bind the sanitized input to the prepared statement
+        $stmt->bind_param("s", $paragraph);
+
+        // Execute the statement to insert the data into the table
+        $stmt->execute();
+
+        $title = ($_POST['title']);
+        $name = ($_POST['name']);
+        $post = ($_POST['post']);
+        date_default_timezone_set('Asia/Kolkata');
+        $date = date("Y-m-d H:i:s");
+
+        if(isset($_POST['button'])){
+            $query = "INSERT INTO posts(post_name, post_user, post, post_date) VALUES ('$title', '$name', '$post', '$date')";
+            $result = mysqli_query($conn, $query);
+        }
+    ?>
+
+    <?php
+        $conn = mysqli_connect('localhost', 'root', '12345678', 'MedLink');
+
+        $title = mysqli_real_escape_string($conn, $_POST['title']);
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $post = mysqli_real_escape_string($conn, $_POST['post']);
+        date_default_timezone_set('Asia/Kolkata');
+        $date = date("Y-m-d H:i:s");
+
+        // Prepare the SQL query
+        $stmt = $conn->prepare("INSERT INTO posts (post_name, post_user, post, post_date) VALUES (?, ?, ?, ?)");
+
+        // Bind the sanitized input to the prepared statement
+        $stmt->bind_param("ssss", $title, $name, $post, $date);
+
+        // Execute the statement to insert the data into the table
+        $stmt->execute();
+
+        if(isset($_POST['button'])){
+            $query = "INSERT INTO posts(post_name, post_user, post, post_date) VALUES ('$title', '$name', '$post', '$date')";
+            $result = mysqli_query($conn, $query);
+        }
+    ?>
+
+    <?php
+    // Establish connection to the database
+    $conn = mysqli_connect('localhost:3306', 'root', '12345678', 'MedLink');
+
+    // Retrieve data from the database
+    $result=mysqli_query($conn,"SELECT * FROM `posts`");
+
+    // Display data in HTML format
+    while($row=mysqli_fetch_assoc($result))
+    {   
+        echo
+        '<div class="fetch">'.
+        '<div class="title">'.htmlspecialchars($row['post_name']).'<br><hr>'.
+        '</div>'.htmlspecialchars($row['post']).'<br><br>'.
+        '<img src="profile.png" height="15px" width="15px"> &nbsp'.
+        htmlspecialchars($row['post_user']).'<br>'.
+        htmlspecialchars($row['post_date']).'</div><br>';
+    }
+?>
