@@ -20,29 +20,51 @@
     </head>
     <body>
         <div class="header">
-
-            <nav class="top">
-                <h1>MEDLINK</h1>  
-
-                <!-- Inbox Label -->
-                <i id="f25" class="fa fa-envelope" style="font-size:30px"></i>
-                <!-- Archive Label -->
-                <i id="f25" class="fa fa-inbox" style="font-size:35px"></i>
-            </nav>
-
-            <div class="navi">
-                <nav class="bar">
-                    <form method="post">
-                        <button name="Home" class="Button"><a class="anchor" href="index.php">Home</a></button>
-                        <button name="PC" class="Button"><a class="anchor" href="patientcare.php">Patient Care</a></button>
-                        <button name="CR" class="Button"><a class="anchor" href="cliresearch.php">Clinical Research</a></button>
-                        <button name="HospOps" class="Button"><a class="anchor" href="hospops.php">Hospital Operations</a></button>
-                    </form>
+            <nav>
+                <div class="title-container"><h1>MEDLINK</h1></div>
+                <div class="set-menu">
+                    <ol class="set-menu">
+                        <!-- Inbox Label -->
+                        <li><i id="f25" class="fa fa-envelope" style="font-size:30px"></i></li>
+                        <!-- Archive Label -->
+                        <li><i id="f25" class="fa fa-inbox" style="font-size:34px"></i></li>
+                        <li><a type="button" id="userProfileId" class="login-modal-btn p-relative" aria-expanded="false" data-expandable="false" href="login.php">Sign In</a></li>
+                    </ol>
+                </div>
                 </nav>
-            </div>
+        </div>
+
+        <div class="nav-bar">
+            <nav>
+                <form method="post">
+                    <button name="Home" class="Button"><a class="anchor" href="index.php">Home</a></button>
+                    <button name="PC" class="Button"><a class="anchor" href="patientcare.php">Patient Care</a></button>
+                    <button name="CR" class="Button"><a class="anchor" href="cliresearch.php">Clinical Research</a></button>
+                    <button name="HospOps" class="Button"><a class="anchor" href="hospops.php">Hospital Operations</a></button>
+                </form>
+            </nav>
         </div>
 
         <div class="content">
+            <?php
+                echo '<div class="plus"><a class="plus" href="add.php"><i class="fa fa-plus" style="font-size:50px"></i></a><br><br></div>';
+
+                // Establish connection to the database
+                $conn = mysqli_connect('localhost', 'root', '12345678', 'MedLink');
+
+                // Retrieve data from the database
+                $result=mysqli_query($conn,"SELECT * FROM `posts`");
+
+                // Display data in HTML format
+                while ($row = mysqli_fetch_assoc($result)) {
+                echo '<div class="fetch">' .
+                     '<div class="title">' . htmlspecialchars(stripslashes($row['post_name'])) . '<br><hr>' .
+                     '</div>' . nl2br(htmlspecialchars(stripslashes($row['post']))) . '<br><br>' .
+                     '<img src="profile.png" height="15px" width="15px"> &nbsp' .
+                     htmlspecialchars(stripslashes($row['post_user'])) . '<br>' .
+                     htmlspecialchars(stripslashes($row['post_date'])) . '</div><br>';
+                }
+            ?>
         </div>
 
         <footer class="site-footer">

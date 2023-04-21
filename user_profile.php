@@ -2,6 +2,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Profile Page</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="user_profile.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
 
@@ -9,16 +10,16 @@
         <div class="wrapper">
             <div class="top">
                 <div class="upload">
-                    <img src="photo.png" width="120" height="120" >
+                    <img src="profile.png" width="120" height="120" >
                     <div class="round">
-                        <i class="fa-solid fa-pencil" style="color: #fff;"></i>
+                        <i class="fa-solid fa-pencil"></i>
                         <button type="button" class="btn-warning">
-                            <i class="fa fa-upload"></i>Upolad File
+                            <i class="fa fa-upload"></i>Upload File
                         </button>
                     </div>
                 </div>
-                <h4>Vatsal</h4>
-                <p>UI Developer</p>
+                <h4>Dr. Sarah Williams</h4>
+                <p>Head Surgeon, Orthopaedic Department</p>
             </div>
 
             <div class="bottom">

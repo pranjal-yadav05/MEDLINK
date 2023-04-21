@@ -14,6 +14,44 @@ body
     background: #f3f3f3f3;
 }
 
+.round {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin-right: 10px;
+  transform: scale(1.3);
+}
+
+.round i.fa-pencil {
+  font-size: 14px;
+}
+
+.btn-warning {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffc107;
+  color: #fff;
+  border: none;
+  padding: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-warning i.fa-upload {
+  margin-right: 5px;
+}
+
+.fa-pencil {
+    color: #fff;
+    margin-top: 7px;
+    font-size: 0.6em;
+}
+
 .wrapper
 {
     position: absolute;
