@@ -28,7 +28,7 @@
 }
 
 .header{
-    background-image: url("background.jpg");
+    background-image: url("/images/background.jpg");
     background-size: cover;
     background-attachment: fixed;
     height: 10vh;
@@ -146,19 +146,35 @@ body{
     margin:0;*/
 }
 
+.submit-anchor{
+    background:none;
+    font-size: 14px;
+    padding:10px;
+}
+
+.submit-anchor:hover{
+    color: rgb(152, 246, 0);
+    cursor: pointer;
+}
+
 .form-btn {
+    text-decoration: none;
+    color: white;
     cursor: pointer;
     outline: 0px;
     background-color: #273239;
-    color: white;
     font-family: var(--font-primary);
     padding: 8px 27px;
     border-radius: 5px;
-    font-size: 14px;
-    text-decoration: none;
+    font-size: 2.5vh;
     margin-right: 20px;
     border: 0px;
     white-space: nowrap;
+}
+
+.form-btn:hover {
+    color: rgb(152, 246, 0);
+    cursor: pointer;
 }
 
 .Button{
@@ -191,6 +207,70 @@ body{
     color:blueviolet;
 }
 
+/* The modal container */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scrolling */
+  background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+  transform: translate(-50%, -50%);
+}
+
+/* Style the modal content */
+.design {
+  background-color: black;
+  opacity:0.9;
+  color:white;
+  width:auto;
+  margin:auto;
+  width:fit-content;
+  height:fit-content;
+  align-self:center;
+  padding:50px;
+  border-radius:20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.post-header {
+    text-align:center;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.new {
+    text-align:center;
+    font-size:3.5vh;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.input,.post {
+    font-size:2.5vh;
+    padding:2px;
+    border-radius:5px;
+}
+
+/* Style the button/link to open the modal 
+#myBtn {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}*/
+
 .content{
     padding-top: 10px;
     font-family: 'IBM Plex Sans', sans-serif;
@@ -221,21 +301,19 @@ body{
 
 .anchor{
     text-decoration: none;
-    color:white;*/
-    border:2px solid black;
+    color:white;
     margin-right: -2px;
     margin-left: -2px;
     background:none;
     font-size: 2.5vh;
     /*font-style: oblique;*/
     padding:10px;
-    color:white;
 }
-
+/*
 .img{
-    background-image: url("profile.png");
+    background-image: url("/images/profile.png");
 }
-
+*/
 .anchor:hover{
     background-color: black;
     color: rgb(152, 246, 0);
