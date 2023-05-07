@@ -19,6 +19,8 @@
   }
 }
 
+
+
 .nav-bar{
     font-family: 'Oswald', sans-serif;
     background-color: black;
@@ -82,6 +84,7 @@ dl, ol, ul {
 
 #f25{
     color:white;
+    margin-right:20px;
 }
 
 .fa-inbox {
@@ -123,7 +126,8 @@ html, body {
 }
 
 body{
-    background-image: url("/images/tablet-medical-equipment.jpg");
+   background-image: url("/images/background_new.jpg");
+    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -226,7 +230,7 @@ body{
   background-color: black;
   opacity:0.9;
   color:white;
-  width:auto;
+  
   margin:auto;
   width:fit-content;
   height:fit-content;
@@ -297,6 +301,8 @@ body{
 .title{
     margin-left: 5px;
     font-family: 'Oswald', sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .anchor{
