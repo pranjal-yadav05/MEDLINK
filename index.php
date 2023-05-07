@@ -23,7 +23,7 @@
     <body>
         <div class="header">
             <nav>
-                <div class="title-container"><h1>MEDLINK</h1></div>
+                <div class="title-container"><h1><a class="link" href="index.php">MEDLINK</a></h1></div>
                 <div class="set-menu">
                     <ol class="set-menu">
                         <!-- Inbox Label -->
@@ -51,17 +51,17 @@
             <div class="plus"><a class="plus" id="myBtn" href="#"><i class="fa fa-plus" style="font-size:50px"></i></a><br><br></div>
 
             <!-- The modal container -->
-                <div id="myModal" class="modal">
-                    <div class="design">
-                        <h2 class="post-header">Posting as <u>*username*</u><h2>
-                            <form class="new" autocomplete="off" method="POST">
-                                Name : <input type="text" name="name" placeholder="Enter your name" class="input"><br><br>
-                                Title: <input type="text" name="title" placeholder="Enter post title" class="input"><br><br>
-                                Post: <br><textarea type="text" name="post" rows="6" placeholder="Write your post" class="post"></textarea><br>
-                                <br><button type="submit" name="submit" class="form-btn" id="submit-btn" formaction="index.php">Submit</button>
-                            </form>
-                    </div>
+            <div id="myModal" class="modal">
+                <div class="design">
+                    <h2 class="post-header">Posting as <u>*username*</u><h2>
+                    <form class="new" autocomplete="off" method="POST">
+                        Name : <input type="text" name="name" placeholder="Enter your name" class="input"><br><br>
+                        Title: <input type="text" name="title" placeholder="Enter post title" class="input"><br><br>
+                        Post: <br><textarea type="text" name="post" rows="6" placeholder="Write your post" class="post"></textarea><br>
+                        <br><button type="submit" name="submit" class="form-btn" id="submit-btn" formaction="index.php">Submit</button>
+                    </form>
                 </div>
+            </div>
 
             <script>
                 // Get the modal
@@ -97,9 +97,8 @@
                     $name = mysqli_real_escape_string($conn, $_POST['name']);
                     $title = mysqli_real_escape_string($conn, $_POST['title']);
                     $post = mysqli_real_escape_string($conn, $_POST['post']);
-                    $post = stripslashes($post); // Remove any slashes from the input
-                    $post = str_replace(array("\r\n", "\r", "\n", " rn "), "\n", $post); // replace all types of newline characters with \n or nl (newline)
-
+                    $post = str_replace("\\r\\n", "\n", $post);
+                    
                     date_default_timezone_set('Asia/Kolkata');
                     $date = date("Y-m-d H:i:s");
 
@@ -139,12 +138,5 @@
 </html>
 
 <!-- Commented Code begins...
-'<div class="fetch">'.
-'<div class="title">'.$row['post_name'].'<br><hr>'.
-'</div>'.$row['post'].'<br><br>'.
-'<img src="profile.png" height="15px" width="15px"> &nbsp'.
-$row['post_user'].'<br>'.
-$row['post_date'].'</div><br>';
-
 
     ...Commented Code ends-->

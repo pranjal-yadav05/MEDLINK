@@ -20,7 +20,7 @@
 
     <body>
     <div  class="header">
-        <h1>MEDLINK</h1>
+        <h1><a class="link" href="index.php">MEDLINK</a></h1>
     </div
         <form method="POST" action="">
             <input type="text" name="email" placeholder="Enter your email">

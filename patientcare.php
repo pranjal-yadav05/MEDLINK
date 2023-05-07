@@ -21,7 +21,7 @@
     <body>
         <div class="header">
             <nav>
-                <div class="title-container"><h1>MEDLINK</h1></div>
+                <div class="title-container"><h1><a class="link" href="index.php">MEDLINK</a></h1></div>
                 <div class="set-menu">
                     <ol class="set-menu">
                         <!-- Inbox Label -->
@@ -95,14 +95,13 @@
                     $name = mysqli_real_escape_string($conn, $_POST['name']);
                     $title = mysqli_real_escape_string($conn, $_POST['title']);
                     $post = mysqli_real_escape_string($conn, $_POST['post']);
-                    $post = stripslashes($post); // Remove any slashes from the input
-                    $post = str_replace(array("\r\n", "\r", "\n", " rn "), "\n", $post); // replace all types of newline characters with \n or nl (newline)
+                    $post = str_replace("\\r\\n", "\n", $post);
 
                     date_default_timezone_set('Asia/Kolkata');
                     $date = date("Y-m-d H:i:s");
 
                     // Prepare the SQL query
-                    $stmt = $conn->prepare("INSERT INTO posts (post_name, post_user, post, post_date) VALUES (?, ?, ?, ?)");
+                    $stmt = $conn->prepare("INSERT INTO patientcare (post_name, post_user, post, post_date) VALUES (?, ?, ?, ?)");
 
                     // Bind the sanitized input to the prepared statement
                     $stmt->bind_param("ssss", $title, $name, $post, $date);
@@ -112,7 +111,7 @@
                 }
 
                 // Retrieve data from the database
-                $result=mysqli_query($conn,"SELECT * FROM `posts`");
+                $result=mysqli_query($conn,"SELECT * FROM `patientcare`");
 
                 // Display data in HTML format
                 while ($row = mysqli_fetch_assoc($result)) {
