@@ -18,7 +18,13 @@
     font-size: 20px;
   }
 }
-
+/*to hide menu 
+@media (max-width: 630px) {
+  .set_menu{
+    display: none !important;
+  }
+}
+*/
 
 
 .nav-bar{
@@ -115,7 +121,7 @@ h1{
     font-family: 'Oswald', sans-serif;
     font-size: 8vh;
     margin-right: 0;
-    margin-top: 0;
+    margin-top: -1px;
     margin-bottom: 0;
     top:0;
 }
