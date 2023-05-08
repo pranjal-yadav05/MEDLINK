@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="styles.css" rel="stylesheet">
-        <link rel="icon" id="icon" type="image/png" href="/images/MedLinkAnimatedFavicon1.png">
+        <link rel="icon" id="icon" href="/images/MedLinkAnimatedFavicon1.png">
 
         <!--<script src="favicon.js"></script>-->
 
@@ -24,7 +24,7 @@
         <div class="header">
             <nav>
                 <div class="title-container"><h1>MEDLINK</h1></div>
-                <div class="set-menu">
+                <div id="set" class="set-menu">
                     <ol class="set-menu">
                         <!-- Inbox Label -->
                         <li><i id="f25" class="fa fa-envelope" style="font-size:30px"></i></li>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="content">
-            <div class="plus"><a class="plus" id="myBtn" href="#"><i class="fa fa-plus" style="font-size:50px"></i></a><br><br></div>
+            <div class="plus"><a class="plus" id="myBtn" href="#"><i class="fa fa-plus" style="font-size:50px"></i></a></div>
 
             <!-- The modal container -->
                 <div id="myModal" class="modal">
@@ -82,13 +82,18 @@
                     }
                 }
             </script>
+            <script>
+            if ( window.history.replaceState ) {
+             window.history.replaceState( null, null, window.location.href );
+            }
 
+            </script>
             <?php
                 error_reporting(E_ALL);
                 ini_set('display_errors', 1);
 
                 // Establish connection to the database
-                $conn = mysqli_connect('localhost', 'root', '12345678', 'MedLink');
+                $conn = mysqli_connect('sql105.epizy.com', 'epiz_34148914', 'de2tDe3J2YEt', 'epiz_34148914_medlink');
 
                 // Check if form has been submitted
                 if(isset($_POST['submit'])){
@@ -114,16 +119,16 @@
                 }
 
                 // Retrieve data from the database
-                $result=mysqli_query($conn,"SELECT * FROM `posts`");
+                $result=mysqli_query($conn,"SELECT * FROM posts ORDER BY post_id DESC");
 
                 // Display data in HTML format
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="fetch">' .
+                    echo '<marquee direction="down" scrollamount="20" behavior="slide"><div class="fetch">' .
                          '<div class="title">' . htmlspecialchars(stripslashes($row['post_name'])) . '<br><hr>' .
                          '</div>' . nl2br(htmlspecialchars(stripslashes($row['post']))) . '<br><br>' .
                          '<img src="/images/profile.png" height="15px" width="15px"> &nbsp' .
                          htmlspecialchars(stripslashes($row['post_user'])) . '<br>' .
-                         htmlspecialchars(stripslashes($row['post_date'])) . '</div><br>';
+                         htmlspecialchars(stripslashes($row['post_date'])) . '</div></marquee><br>';
                 }
             ?>
         </div>
@@ -135,6 +140,23 @@
                     Freepik
                 </a>
         </footer>
+        <script>
+        //script for responsivity
+            var mediaQuery = window.matchMedia("(max-width: 696px)");
+            var element = document.getElementById("set");
+
+            function handleViewportChange(mediaQuery) {
+            if (mediaQuery.matches) {
+                element.style.display = "none";
+            } else {
+                element.style.display = "block"; // Or any other desired display value
+            }
+            }
+
+            mediaQuery.addListener(handleViewportChange); // Add listener to handle changes on viewport width
+            handleViewportChange(mediaQuery); // Call the function initially to set the initial state
+
+            </script>
     </body>
 </html>
 
