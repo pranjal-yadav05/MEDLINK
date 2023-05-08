@@ -22,7 +22,7 @@
         <div class="header">
             <nav>
                 <div class="title-container"><h1><a class="link" href="index.php">MEDLINK</a></h1></div>
-                <div class="set-menu">
+                <div id="set" class="set-menu">
                     <ol class="set-menu">
                         <!-- Inbox Label -->
                         <li><i id="f25" class="fa fa-envelope" style="font-size:30px"></i></li>
@@ -80,13 +80,19 @@
                     }
                 }
             </script>
+            <script>
+            if ( window.history.replaceState ) {
+             window.history.replaceState( null, null, window.location.href );
+            }
+
+            </script>
 
             <?php
                 error_reporting(E_ALL);
                 ini_set('display_errors', 1);
 
                 // Establish connection to the database
-                $conn = mysqli_connect('localhost', 'root', '12345678', 'MedLink');
+                $conn = mysqli_connect('sql105.epizy.com', 'epiz_34148914', 'de2tDe3J2YEt', 'epiz_34148914_medlink');
 
                 // Check if form has been submitted
                 if(isset($_POST['submit'])){
@@ -111,16 +117,16 @@
                 }
 
                 // Retrieve data from the database
-                $result=mysqli_query($conn,"SELECT * FROM `hospops`");
+                $result=mysqli_query($conn,"SELECT * FROM `hospops` ORDER BY post_id DESC");
 
                 // Display data in HTML format
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="fetch">' .
+                    echo '<marquee direction="down" scrollamount="20" behavior="slide"><div class="fetch">' .
                          '<div class="title">' . htmlspecialchars(stripslashes($row['post_name'])) . '<br><hr>' .
                          '</div>' . nl2br(htmlspecialchars(stripslashes($row['post']))) . '<br><br>' .
                          '<img src="/images/profile.png" height="15px" width="15px"> &nbsp' .
                          htmlspecialchars(stripslashes($row['post_user'])) . '<br>' .
-                         htmlspecialchars(stripslashes($row['post_date'])) . '</div><br>';
+                         htmlspecialchars(stripslashes($row['post_date'])) . '</div></marquee><br>';
                 }
             ?>
         </div>
@@ -132,6 +138,23 @@
                 Freepik
             </a>
         </footer>
+        <script>
+        //code for responsivity
+            var mediaQuery = window.matchMedia("(max-width: 696px)");
+            var element = document.getElementById("set");
+
+            function handleViewportChange(mediaQuery) {
+            if (mediaQuery.matches) {
+                element.style.display = "none";
+            } else {
+                element.style.display = "block"; // Or any other desired display value
+            }
+            }
+
+            mediaQuery.addListener(handleViewportChange); // Add listener to handle changes on viewport width
+            handleViewportChange(mediaQuery); // Call the function initially to set the initial state
+
+            </script>
 </body>
 </html>
 
