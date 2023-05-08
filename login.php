@@ -71,6 +71,9 @@
     .bottom i{
         font-size:25px;
     }
+    body{
+        background-color:url("/images/background_new.jpg");
+    }
     </style>
     <body>
     
