@@ -106,7 +106,7 @@
                     $date = date("Y-m-d H:i:s");
 
                     // Prepare the SQL query
-                    $stmt = $conn->prepare("INSERT INTO posts (post_name, post_user, post, post_date) VALUES (?, ?, ?, ?)");
+                    $stmt = $conn->prepare("INSERT INTO patientcare (post_name, post_user, post, post_date) VALUES (?, ?, ?, ?)");
 
                     // Bind the sanitized input to the prepared statement
                     $stmt->bind_param("ssss", $title, $name, $post, $date);
@@ -116,7 +116,7 @@
                 }
 
                 // Retrieve data from the database
-                $result=mysqli_query($conn,"SELECT * FROM `posts`");
+                $result=mysqli_query($conn,"SELECT * FROM `patientcare` ORDER BY post_id DESC");
 
                 // Display data in HTML format
                 while ($row = mysqli_fetch_assoc($result)) {

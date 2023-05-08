@@ -24,7 +24,7 @@
         <div class="header">
             <nav>
                 <div class="title-container"><h1><a class="link" href="index.php">MEDLINK</a></h1></div>
-                <div class="set-menu">
+                <div id="set" class="set-menu">
                     <ol class="set-menu">
                         <!-- Inbox Label -->
                         <li><i id="f25" class="fa fa-envelope" style="font-size:30px"></i></li>
@@ -139,8 +139,10 @@
                     Freepik
                 </a>
         </footer>
+
         <script>
-        //script for responsivity
+            //script for responsivity
+
             var mediaQuery = window.matchMedia("(max-width: 696px)");
             var element = document.getElementById("set");
 
@@ -154,8 +156,7 @@
 
             mediaQuery.addListener(handleViewportChange); // Add listener to handle changes on viewport width
             handleViewportChange(mediaQuery); // Call the function initially to set the initial state
-
-            </script>
+        </script>
     </body>
 </html>
 
