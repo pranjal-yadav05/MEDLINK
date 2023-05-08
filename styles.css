@@ -132,8 +132,7 @@ html, body {
 }
 
 body{
-   background-image: url("/images/background_new.jpg");
-    
+    background-image: url("/images/background_new.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -306,10 +305,9 @@ body{
 
 .title{
     margin-left: 5px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     padding-left: 10px;
     padding-right: 10px;
-    font-family: "Oswald", sans-serif;
 }
 
 .anchor{
@@ -319,8 +317,8 @@ body{
     margin-left: -2px;
     background:none;
     font-size: 2.5vh;
-    /*font-style: oblique;*/
     padding:10px;
+    /*font-style: oblique;*/
 }
 /*
 .img{
