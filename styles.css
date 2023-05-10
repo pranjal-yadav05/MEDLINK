@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 /* styles for screens smaller than 600px */
 @media (max-width: 600px) {
   body {
@@ -18,25 +20,59 @@
     font-size: 20px;
   }
 }
-/*to hide menu 
-@media (max-width: 630px) {
-  .set_menu{
+
+/* styles for smaller screens 
+@media (max-width: 767px) {
+  .set_menu {
     display: none !important;
   }
+}*/
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
-*/
 
+body{
+    /*background-image: url("/images/tablet-medical-equipment.jpg");
+    
+    background-color: cadetblue;*/background-image: url("/images/healthcare.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
+    /*font-family: "Open Sans", Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;*/
+    min-height: 98vh;
+    display: flex;
+    flex-direction: column;
+    
+    /*object-fit: cover;*/
+}
 
-.nav-bar{
-    font-family: "Oswald", sans-serif;
-    background-color: black;
-    width: 100vw;
-    text-align: center;
-    align-self: center;
+/* Set the color of the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: slateblue;
+}
+
+/* Set the color of the scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Set the width of the scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Remove the default arrows on the scrollbar */
+::-webkit-scrollbar-button {
+  display: none;
 }
 
 .header{
-    background-image: url("/images/background.jpg");
+    background-image: url("/images/titleHeader.jpg");
     background-size: cover;
     background-attachment: fixed;
     height: 10vh;
@@ -47,11 +83,6 @@
 
 .header i{
     margin:0 5px;
-}
-
-nav {
-    justify-content: space-between;
-    align-items: center;
 }
 
 .title-container {
@@ -67,10 +98,20 @@ nav {
     display: flex;
     justify-content: center;
     text-decoration: none;
-    transform: translate(-50%, -426%);
+    transform: translate(-50%, -424%);
     align-self: center;
     vertical-align: middle;
     align-content: center;
+}
+
+h1{
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 8vh;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    top:0;
 }
 
 .set-menu {
@@ -78,10 +119,17 @@ nav {
     margin-left: auto;
     display: flex;
     align-items: center;
-    padding-left: 0;
-    height: 100%;
-    /*float: right;*/
 }
+
+/*.set-menu li {
+  float: left;
+  margin-right: 20px; /* Add some spacing between elements 
+
+
+.set-menu li {
+  display: inline-block;
+  margin-right: 20px;
+}}*/
 
 dl, ol, ul {
     margin-top: 0;
@@ -116,54 +164,108 @@ dl, ol, ul {
     position: relative;
 }
 
-h1{
-    text-align:center;
-    font-family: "Oswald", sans-serif;
-    font-size: 8vh;
-    margin-right: 0;
-    margin-top: -1px;
-    margin-bottom: 0;
-    top:0;
+.nav-bar{
+    font-family: 'Oswald', sans-serif;
+    background-color: black;
+    width: 100vw;
+    text-align: -webkit-center;
+    align-self: center;
+    white-space: nowrap;
+    overflow-x: auto;
+    /* hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
 
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+/* hide scrollbar for WebKit based browsers */
+.nav-bar::-webkit-scrollbar {
+    display: none;
 }
 
-body{
-    background-image: url("/images/background_new.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 98vh;
-    display: flex;
-    flex-direction: column;
-    
-    /*
-    object-fit: cover;
-    
-    background-size: contain;
-    */
-
-    /*background-color: white;
-    text-align: left;
-    
-    background-size:cover;
-    margin:0;*/
+.navElement{
+    background: none;
+    font-size: 2.5vh;
+    padding: 10px;
+    color: white;
+    display: inline-block;
 }
 
-.submit-anchor{
-    background:none;
-    font-size: 14px;
-    padding:10px;
-}
-
-.submit-anchor:hover{
+.navElement:hover{
+    background-color: black;
     color: rgb(152, 246, 0);
     cursor: pointer;
+}
+
+.navElement:active{
+    background-color: black;
+    color: rgb(241, 0, 0);
+}
+
+.content{
+    padding-top: 10px;
+    /*font-family: 'Open sans', IBM Plex Sans, sans-serif;*/
+    font-family: 'Poppins', sans-serif;
+    margin-left: 10px;
+    margin-right: 10px;   
+}
+
+.plus{
+    text-align: center;
+}
+
+.plus:hover{
+    color: blueviolet;
+}
+
+/* The modal container */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scrolling */
+  background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+  transform: translate(-50%, -50%);
+}
+
+/* Style the modal content */
+.design {
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  align-self: center;
+  padding: 50px;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.post-header {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    /*font-family: 'Open Sans', IBM Plex Sans, sans-serif;*/
+}
+
+.new {
+    text-align: center;
+    font-size: 3.5vh;
+    font-family: 'Poppins', sans-serif;
+    /*font-family: 'Open Sans', IBM Plex Sans, sans-serif;*/
+}
+
+.input, .post {
+    font-size: 2.5vh;
+    padding: 2px;
+    border-radius: 5px;
 }
 
 .form-btn {
@@ -186,83 +288,15 @@ body{
     cursor: pointer;
 }
 
-.Button{
-    border:2px solid black;
-    margin-right: -2px;
-    margin-left: -2px;
-    background:none;
-    font-size: 2.5vh;
-    /*font-style: oblique;*/
-    padding:10px;
-    color:white;
+.submit-anchor{
+    background: none;
+    font-size: 14px;
+    padding: 10px;
 }
 
-.Button:hover{
-    background-color: black;
+.submit-anchor:hover{
     color: rgb(152, 246, 0);
     cursor: pointer;
-}
-
-.Button:active{
-    background-color: black;
-    color: rgb(241, 0, 0);
-}
-
-.plus{
-    text-align: center;
-}
-
-.plus:hover{
-    color:blueviolet;
-}
-
-/* The modal container */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 50%;
-  top: 50%;
-  width: 100%;
-  height: 100%;
-  overflow: auto; /* Enable scrolling */
-  background-color: rgba(0,0,0,0.4); /* Black background with opacity */
-  transform: translate(-50%, -50%);
-}
-
-/* Style the modal content */
-.design {
-  background-color: black;
-  opacity:0.9;
-  color:white;
-  
-  margin:auto;
-  width:fit-content;
-  height:fit-content;
-  align-self:center;
-  padding:50px;
-  border-radius:20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.post-header {
-    text-align:center;
-    font-family: 'IBM Plex Sans', sans-serif;
-}
-
-.new {
-    text-align:center;
-    font-size:3.5vh;
-    font-family: 'IBM Plex Sans', sans-serif;
-}
-
-.input,.post {
-    font-size:2.5vh;
-    padding:2px;
-    border-radius:5px;
 }
 
 /* Style the button/link to open the modal 
@@ -280,51 +314,56 @@ body{
   cursor: pointer;
 }*/
 
-.content{
-    padding-top: 10px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    margin-left:10px;
-    margin-right:10px;   
-}
-
 .pr{
-    margin:20px 20px;
-    border:1px solid black;
+    margin: 20px 20px;
+    border: 1px solid black;
     border-radius: 10px;
 }
 
 .fetch{
     border: 2px solid black;
     border-radius: 10px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    /*font-family: 'Open sans', IBM Plex Sans, sans-serif;*/
     padding: 5px 5px;
     background-color: black;
-    opacity: 0.5;
+    opacity: 0.8;
     color:white;
+}
+
+.original-poster{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .title{
-    margin-left: 5px;
-    font-family: "Oswald", sans-serif;
-    padding-left: 10px;
-    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Oswald', sans-serif;
 }
 
-.anchor{
-    text-decoration: none;
-    color:white;
-    margin-right: -2px;
-    margin-left: -2px;
-    background:none;
-    font-size: 2.5vh;
-    padding:10px;
-    /*font-style: oblique;*/
+.post_content{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.post_date{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 /*
 .img{
     background-image: url("/images/profile.png");
 }
 */
+.anchor{
+    text-decoration: none;
+    color: white;
+    background: none;
+    font-size: 2.5vh;
+    padding: 10px;
+}
+
 .anchor:hover{
     background-color: black;
     color: rgb(152, 246, 0);

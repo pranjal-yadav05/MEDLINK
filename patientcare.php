@@ -1,18 +1,21 @@
+<?php error_reporting(0); ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital@1&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="styles.css" rel="stylesheet">
-        <link rel="icon" id="icon" type="image/png" href="/images/MedLinkAnimatedFavicon1.png">
+        <link rel="icon" id="icon" href="/images/MedLinkAnimatedFavicon1.png">
 
         <!--<script src="favicon.js"></script>-->
 
@@ -20,8 +23,7 @@
     </head>
     <body>
         <div class="header">
-            <nav>
-                <div class="title-container"><h1>MEDLINK</h1></div>
+                <div class="title-container"><h1><a class="link" href="index.php">MEDLINK</a></h1></div>
                 <div id="set" class="set-menu">
                     <ol class="set-menu">
                         <!-- Inbox Label -->
@@ -31,35 +33,34 @@
                         <li><a type="button" id="userProfileId" class="login-modal-btn p-relative" aria-expanded="false" data-expandable="false" href="login.php">Sign In</a></li>
                     </ol>
                 </div>
-                </nav>
         </div>
 
         <div class="nav-bar">
             <nav>
-                <form method="post">
-                    <button name="Home" class="Button"><a class="anchor" href="index.php">Home</a></button>
-                    <button name="PC" class="Button"><a class="anchor" href="patientcare.php">Patient Care</a></button>
-                    <button name="CR" class="Button"><a class="anchor" href="cliresearch.php">Clinical Research</a></button>
-                    <button name="HospOps" class="Button"><a class="anchor" href="hospops.php">Hospital Operations</a></button>
-                </form>
+                &nbsp &nbsp    
+                <a class="anchor navElement" href="index.php">Home</a>
+                <a class="anchor navElement" href="patientcare.php">Patient Care</a>
+                <a class="anchor navElement" href="cliresearch.php">Clinical Research</a>
+                <a class="anchor navElement" href="hospops.php">Hospital Operations</a>
+                &nbsp &nbsp
             </nav>
         </div>
 
         <div class="content">
-            <div class="plus"><a class="plus" id="myBtn" href="#"><i class="fa fa-plus" style="font-size:50px"></i></a><br><br></div>
+            <div class="plus"><a class="plus" id="myBtn" href="#"><i class="fa fa-plus" style="font-size:50px"></i></a></div>
 
             <!-- The modal container -->
-                <div id="myModal" class="modal">
-                    <div class="design">
-                        <h2 class="post-header">Posting as <u>*username*</u><h2>
-                            <form class="new" autocomplete="off" method="POST">
-                                Name : <input type="text" name="name" placeholder="Enter your name" class="input"><br><br>
-                                Title: <input type="text" name="title" placeholder="Enter post title" class="input"><br><br>
-                                Post: <br><textarea type="text" name="post" rows="6" placeholder="Write your post" class="post"></textarea><br>
-                                <br><button type="submit" name="submit" class="form-btn" id="submit-btn" formaction="patientcare.php">Submit</button>
-                            </form>
-                    </div>
+            <div id="myModal" class="modal">
+                <div class="design">
+                    <h2 class="post-header">Posting as <u>*username*</u><h2>
+                    <form class="new" method="POST">
+                        Name : <input type="text" name="name" autocomplete="on" placeholder="Enter your name" class="input"><br><br>
+                        Title: <input type="text" name="title" autocomplete="off" placeholder="Enter post title" class="input"><br><br>
+                        Post: <br><textarea type="text" name="post" rows="6" autocomplete="off" placeholder="Write your post" class="post"></textarea><br>
+                        <br><button type="submit" name="submit" class="form-btn" id="submit-btn" formaction="index.php">Submit</button>
+                    </form>
                 </div>
+            </div>
 
             <script>
                 // Get the modal
@@ -79,19 +80,27 @@
                         modal.style.display = "none";
                     }
                 }
-            </script>
-            <script>
-            if ( window.history.replaceState ) {
-             window.history.replaceState( null, null, window.location.href );
-            }
+                
+                if ( window.history.replaceState ) {
+                    window.history.replaceState( null, null, window.location.href );
+                }
             </script>
 
             <?php
-                error_reporting(E_ALL);
-                ini_set('display_errors', 1);
+                // Connection parameters
+                $servername = "localhost";
+                $username = "root";
+                $password = "12345678";
+                $database = "MedLink";
 
                 // Establish connection to the database
-                $conn = mysqli_connect('sql105.epizy.com', 'epiz_34148914', 'de2tDe3J2YEt', 'epiz_34148914_medlink');
+                $conn = mysqli_connect($servername, $username, $password, $database);
+
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+                //echo "Connected successfully";
 
                 // Check if form has been submitted
                 if(isset($_POST['submit'])){
@@ -116,29 +125,41 @@
                 }
 
                 // Retrieve data from the database
-                $result=mysqli_query($conn,"SELECT * FROM `patientcare` ORDER BY post_id DESC");
+                $result=mysqli_query($conn,"SELECT * FROM posts ORDER BY post_id DESC");
 
                 // Display data in HTML format
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<marquee direction="down" scrollamount="20" behavior="slide"><div class="fetch">' .
-                         '<div class="title">' . htmlspecialchars(stripslashes($row['post_name'])) . '<br><hr>' .
-                         '</div>' . nl2br(htmlspecialchars(stripslashes($row['post']))) . '<br><br>' .
-                         '<img src="/images/profile.png" height="15px" width="15px"> &nbsp' .
-                         htmlspecialchars(stripslashes($row['post_user'])) . '<br>' .
-                         htmlspecialchars(stripslashes($row['post_date'])) . '</div></marquee><br>';
+                    echo '<div class="fetch"><br>
+                            <div class="original-poster">
+                                <img src="/images/profile.png" height="15px" width="15px"> &nbsp'
+                                . htmlspecialchars(stripslashes($row['post_user'])) . 
+                            '</div><br>
+                            <hr>
+                            <div class="title">'
+                                . htmlspecialchars(stripslashes($row['post_name'])) .
+                            '</div><br>
+                            <div class="post_content">'
+                                . nl2br(htmlspecialchars(stripslashes($row['post']))) . 
+                            '</div><br>
+                            <div class="post_date">'
+                                . htmlspecialchars(stripslashes($row['post_date'])) . 
+                            '</div></div><br>';
                 }
             ?>
         </div>
-
+        
         <footer class="site-footer">
-            <strong>&#169; 2023 MedLink</strong></br>
-            <i>Credits</i>: Background Image by 
-            <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
-                Freepik
-            </a>
+                <strong>&#169; 2023 MedLink</strong></br>
+                <i>Credits</i>: Background Image by 
+                <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
+                    Freepik
+                </a>
         </footer>
+
         <script>
-         var mediaQuery = window.matchMedia("(max-width: 696px)");
+            //script for responsivity
+
+            var mediaQuery = window.matchMedia("(max-width: 767px)");
             var element = document.getElementById("set");
 
             function handleViewportChange(mediaQuery) {
@@ -151,8 +172,7 @@
 
             mediaQuery.addListener(handleViewportChange); // Add listener to handle changes on viewport width
             handleViewportChange(mediaQuery); // Call the function initially to set the initial state
-
-            </script>
+        </script>
     </body>
 </html>
 
