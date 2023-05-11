@@ -33,7 +33,7 @@ html, body {
     overflow-x: hidden;
 }
 
-body{
+body {
     /*background-image: url("/images/tablet-medical-equipment.jpg");
     
     background-color: cadetblue;*/background-image: url("/images/healthcare.jpg");
@@ -71,7 +71,7 @@ body{
   display: none;
 }
 
-.header{
+.header {
     background-image: url("/images/titleHeader.jpg");
     background-size: cover;
     background-attachment: fixed;
@@ -81,7 +81,7 @@ body{
     flex-direction: row-reverse;
 }
 
-.header i{
+.header i {
     margin:0 5px;
 }
 
@@ -104,7 +104,7 @@ body{
     align-content: center;
 }
 
-h1{
+h1 {
     text-align:center;
     font-family: 'Oswald', sans-serif;
     font-size: 8vh;
@@ -136,7 +136,7 @@ dl, ol, ul {
     margin-bottom: 0;
 }
 
-#f25{
+#f25 {
     color:white;
     margin-right:20px;
 }
@@ -164,7 +164,7 @@ dl, ol, ul {
     position: relative;
 }
 
-.nav-bar{
+.nav-bar {
     font-family: 'Oswald', sans-serif;
     background-color: black;
     width: 100vw;
@@ -182,7 +182,7 @@ dl, ol, ul {
     display: none;
 }
 
-.navElement{
+.navElement {
     background: none;
     font-size: 2.5vh;
     padding: 10px;
@@ -190,18 +190,18 @@ dl, ol, ul {
     display: inline-block;
 }
 
-.navElement:hover{
+.navElement:hover {
     background-color: black;
     color: rgb(152, 246, 0);
     cursor: pointer;
 }
 
-.navElement:active{
+.navElement:active {
     background-color: black;
     color: rgb(241, 0, 0);
 }
 
-.content{
+.content {
     padding-top: 10px;
     /*font-family: 'Open sans', IBM Plex Sans, sans-serif;*/
     font-family: 'Poppins', sans-serif;
@@ -209,11 +209,11 @@ dl, ol, ul {
     margin-right: 10px;   
 }
 
-.plus{
+.plus {
     text-align: center;
 }
 
-.plus:hover{
+.plus:hover {
     color: blueviolet;
 }
 
@@ -288,13 +288,13 @@ dl, ol, ul {
     cursor: pointer;
 }
 
-.submit-anchor{
+.submit-anchor {
     background: none;
     font-size: 14px;
     padding: 10px;
 }
 
-.submit-anchor:hover{
+.submit-anchor:hover {
     color: rgb(152, 246, 0);
     cursor: pointer;
 }
@@ -314,13 +314,7 @@ dl, ol, ul {
   cursor: pointer;
 }*/
 
-.pr{
-    margin: 20px 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
-.fetch{
+.fetch {
     border: 2px solid black;
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
@@ -331,32 +325,35 @@ dl, ol, ul {
     color:white;
 }
 
-.original-poster{
+.original-poster {
+    margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
+    display: inline-block;
 }
 
-.title{
+.pfp-preview {
+    display: inline-block;
+    vertical-align: middle; /* to align the image vertically with the text */
+}
+
+.title {
     margin-left: 10px;
     margin-right: 10px;
     font-family: 'Oswald', sans-serif;
 }
 
-.post_content{
+.post_content {
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.post_date{
+.post_date {
     margin-left: 5px;
     margin-right: 5px;
 }
-/*
-.img{
-    background-image: url("/images/profile.png");
-}
-*/
-.anchor{
+
+.anchor {
     text-decoration: none;
     color: white;
     background: none;
@@ -364,13 +361,13 @@ dl, ol, ul {
     padding: 10px;
 }
 
-.anchor:hover{
+.anchor:hover {
     background-color: black;
     color: rgb(152, 246, 0);
     cursor: pointer;
 }
 
-.anchor:active{
+.anchor:active {
     background-color: black;
     color: rgb(241, 0, 0);
 }
@@ -385,18 +382,18 @@ dl, ol, ul {
     text-decoration: none;
 }
 
-.whlink:hover{
+.whlink:hover {
     background-color: black;
     color: rgb(152, 246, 0);
     cursor: pointer;
 }
 
-.whlink:active{
+.whlink:active {
     background-color: black;
     color: rgb(241, 0, 0);
 }
 
-.site-footer{
+.site-footer {
     border:0;
     background-color: black;
     color:white;

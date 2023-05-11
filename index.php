@@ -129,11 +129,11 @@
 
                 // Display data in HTML format
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="fetch"><br>
+                    echo '<div class="fetch">
                             <div class="original-poster">
-                                <img src="/images/profile.png" height="15px" width="15px"> &nbsp'
+                                <a href="user_profile.php"><div class="pfp-preview"><img src="/images/profile.png" height="40px width="40px"></div></a> &nbsp'
                                 . htmlspecialchars(stripslashes($row['post_user'])) . 
-                            '</div><br>
+                            '</div><br><br>
                             <hr>
                             <div class="title">'
                                 . htmlspecialchars(stripslashes($row['post_name'])) .
@@ -150,7 +150,7 @@
         
         <footer class="site-footer">
                 <strong>&#169; 2023 MedLink</strong></br>
-                <i>Credits</i>: Background Image by 
+                <i>Credits </i>: Background Image by 
                 <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
                     Freepik
                 </a>

@@ -150,7 +150,7 @@
         
         <footer class="site-footer">
                 <strong>&#169; 2023 MedLink</strong></br>
-                <i>Credits</i>: Background Image by 
+                <i>Credits </i>: Background Image by 
                 <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
                     Freepik
                 </a>
