@@ -125,7 +125,7 @@
                 }
 
                 // Retrieve data from the database
-                $result=mysqli_query($conn,"SELECT * FROM posts ORDER BY post_id DESC");
+                $result=mysqli_query($conn,"SELECT * FROM cliresearch ORDER BY post_id DESC");
 
                 // Display data in HTML format
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -135,7 +135,7 @@
                                 . htmlspecialchars(stripslashes($row['post_user'])) . 
                             '</div><br><br>
                             <hr>
-                            <div class="title">'
+                            <div class="post_title">'
                                 . htmlspecialchars(stripslashes($row['post_name'])) .
                             '</div><br>
                             <div class="post_content">'

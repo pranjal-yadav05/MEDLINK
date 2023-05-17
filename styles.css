@@ -164,6 +164,75 @@ dl, ol, ul {
     position: relative;
 }
 
+/*.header {
+    background-image: url("/images/titleHeader.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 10vh;
+    position: relative;
+    text-align: right;
+}
+
+.header i {
+    margin: 0 5px;
+}
+
+.title-container {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 8vh;
+    margin: 0;
+    text-align: center;
+}
+
+.set-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.set-menu li {
+    margin-right: 20px;
+}
+
+#f25 {
+    color: white;
+}
+
+.fa-inbox {
+    margin-top: 200px;
+}
+
+.login-modal-btn {
+    cursor: pointer;
+    outline: 0px;
+    background-color: #273239;
+    color: white;
+    font-family: var(--font-primary);
+    padding: 8px 27px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none !important;
+    border: 0px;
+    white-space: nowrap;
+}
+
+.p-relative {
+    position: relative;
+}*/
+
 .nav-bar {
     font-family: 'Oswald', sans-serif;
     background-color: black;
@@ -340,7 +409,7 @@ dl, ol, ul {
     vertical-align: middle; /* to align the image vertically with the text */
 }
 
-.title {
+.post_title {
     margin-left: 10px;
     margin-right: 10px;
     font-family: 'Oswald', sans-serif;
@@ -421,12 +490,13 @@ a:-webkit-any-link {
 }
 
 @keyframes scroll {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .site-footer {

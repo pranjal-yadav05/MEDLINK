@@ -23,16 +23,19 @@
     </head>
     <body>
         <div class="header">
-                <div class="title-container"><h1><a class="title-link" href="index.php">MEDLINK</a></h1></div>
-                <div id="set" class="set-menu">
-                    <ol class="set-menu">
-                        <!-- Inbox Label -->
-                        <li><i id="f25" class="fa fa-envelope" style="font-size:30px"></i></li>
-                        <!-- Archive Label -->
-                        <li><i id="f25" class="fa fa-inbox" style="font-size:34px"></i></li>
-                        <li><a type="button" id="userProfileId" class="login-modal-btn p-relative" aria-expanded="false" data-expandable="false" href="login.php">Sign In</a></li>
-                    </ol>
-                </div>
+            <div class="title-container">
+                <h1 class="title"><a class="title-link" href="index.php">MEDLINK</a></h1>
+            </div>
+            <div id="set" class="set-menu">
+                <ol class="set-menu">
+                    <!-- Inbox Label -->
+                    <li><i id="f25" class="fa fa-envelope" style="font-size:30px"></i></li>
+                    <!-- Archive Label -->
+                    <li><i id="f25" class="fa fa-inbox" style="font-size:34px"></i></li>
+                    <!-- Authentication Label -->
+                    <li><a type="button" id="userProfileId" class="login-modal-btn p-relative" aria-expanded="false" data-expandable="false" href="login.php">Sign In</a></li>
+                </ol>
+            </div>
         </div>
 
         <div class="nav-bar">
@@ -135,7 +138,7 @@
                                 . htmlspecialchars(stripslashes($row['post_user'])) . 
                             '</div><br><br>
                             <hr>
-                            <div class="title">'
+                            <div class="post_title">'
                                 . htmlspecialchars(stripslashes($row['post_name'])) .
                             '</div><br>
                             <div class="post_content">'
