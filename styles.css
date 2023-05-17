@@ -211,10 +211,13 @@ dl, ol, ul {
 
 .plus {
     text-align: center;
+    color: blueviolet;
+    display: inline-block;
 }
 
 .plus:hover {
-    color: blueviolet;
+    color: slateblue;
+    cursor: pointer;
 }
 
 /* The modal container */
@@ -372,9 +375,21 @@ dl, ol, ul {
     color: rgb(241, 0, 0);
 }
 
-.link {
+a:-webkit-any-link {
+    color: white;
+    text-decoration: none;
+}
+
+.title-link:-webkit-any-link {
     text-decoration: none;
     color: black;
+}
+
+.title-link:hover {
+    background-image: linear-gradient(to right,rgb(3, 192, 104),rgb(109, 157, 218));
+    background-clip: text;
+    -webkit-background-clip: text; /* For Safari/Chrome */
+    color: transparent;
 }
 
 .whlink {
@@ -391,6 +406,27 @@ dl, ol, ul {
 .whlink:active {
     background-color: black;
     color: rgb(241, 0, 0);
+}
+
+.scrolling-text-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.scrolling-text {
+  animation: scroll 15s linear infinite;
+  white-space: nowrap;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .site-footer {

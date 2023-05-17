@@ -23,7 +23,7 @@
     </head>
     <body>
         <div class="header">
-                <div class="title-container"><h1><a class="link" href="index.php">MEDLINK</a></h1></div>
+                <div class="title-container"><h1><a class="title-link" href="index.php">MEDLINK</a></h1></div>
                 <div id="set" class="set-menu">
                     <ol class="set-menu">
                         <!-- Inbox Label -->
@@ -47,7 +47,7 @@
         </div>
 
         <div class="content">
-            <div class="plus"><a class="plus" id="myBtn" href="#"><i class="fa fa-plus" style="font-size:50px"></i></a></div>
+            <center><div class="plus" id="myBtn"><i class="fa fa-plus" style="font-size:50px"></i></div></center>
 
             <!-- The modal container -->
             <div id="myModal" class="modal">
@@ -129,11 +129,11 @@
 
                 // Display data in HTML format
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="fetch"><br>
+                    echo '<div class="fetch">
                             <div class="original-poster">
-                                <img src="/images/profile.png" height="15px" width="15px"> &nbsp'
+                                <a href="user_profile.php"><div class="pfp-preview"><img src="/images/profile.png" height="40px width="40px"></div></a> &nbsp'
                                 . htmlspecialchars(stripslashes($row['post_user'])) . 
-                            '</div><br>
+                            '</div><br><br>
                             <hr>
                             <div class="title">'
                                 . htmlspecialchars(stripslashes($row['post_name'])) .
@@ -149,11 +149,17 @@
         </div>
         
         <footer class="site-footer">
-                <strong>&#169; 2023 MedLink</strong></br>
-                <i>Credits </i>: Background Image by 
-                <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
-                    Freepik
-                </a>
+            <br>
+            <div style="text-align: center;" class="scrolling-text-container">
+                <p class="scrolling-text"><font size="+2.5" style="font-family: Oswald; vertical-align: middle;">MedLink Visit Count &nbsp : &nbsp
+	            <script type="text/javascript" src="https://services.webestools.com/cpt_visits/23312-8-9.js"></script></font></p>
+            </div>
+            
+            <strong>&#169; 2023 MedLink</strong></br>
+            <i>Credits </i>: Background Image by 
+            <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
+                Freepik
+            </a>
         </footer>
 
         <script>
