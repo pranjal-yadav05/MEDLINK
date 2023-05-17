@@ -40,7 +40,8 @@
 
         <div class="nav-bar">
             <nav>
-                &nbsp &nbsp    
+                &nbsp &nbsp
+                <button id="btn" class="Button1"><img id="ham-click" class="ham" src="./images/burger-menu.png"></button>    
                 <a class="anchor navElement" href="index.php">Home</a>
                 <a class="anchor navElement" href="patientcare.php">Patient Care</a>
                 <a class="anchor navElement" href="cliresearch.php">Clinical Research</a>
@@ -55,11 +56,31 @@
             <!-- The modal container -->
             <div id="myModal" class="modal">
                 <div class="design">
-                    <h2 class="post-header">Posting as <u>*username*</u><h2>
+                <h2 class="post-header">Posting as 
+                        
+                        
+                        
+                        <?php
+                        $conn = mysqli_connect("localhost","root","","login_database");
+                        $result = mysqli_query($conn,"
+                        SELECT name
+                        FROM session
+                        ORDER BY id DESC
+                        LIMIT 1
+                        ");
+                        
+                        $row = mysqli_fetch_assoc($result);
+                        global $user_name;
+                        $user_name = $row['name'];
+                        echo $user_name;
+                        ?>
+                        
+                        
+                    <h2>
                     <form class="new" method="POST">
-                        Name : <input type="text" name="name" autocomplete="on" placeholder="Enter your name" class="input"><br><br>
-                        Title: <input type="text" name="title" autocomplete="off" placeholder="Enter post title" class="input"><br><br>
-                        Post: <br><textarea type="text" name="post" rows="6" autocomplete="off" placeholder="Write your post" class="post"></textarea><br>
+                        <!-- Name : <input type="text" name="name" placeholder="Enter your name" class="input"><br><br>-->
+                        Title: <input type="text" name="title" placeholder="Enter post title" class="input"><br><br>
+                        Post: <br><textarea type="text" name="post" rows="6" placeholder="Write your post" class="post"></textarea><br>
                         <br><button type="submit" name="submit" class="form-btn" id="submit-btn" formaction="index.php">Submit</button>
                     </form>
                 </div>
@@ -87,6 +108,35 @@
                 if ( window.history.replaceState ) {
                     window.history.replaceState( null, null, window.location.href );
                 }
+            </script>
+
+            <div id="ham-bar" style="display:none" class="ham-modal">
+                <div id="des1" class="ham-design">
+                    <ul>
+                        <li>Inbox</li>
+                        <li>Messages</li>
+                        <li><a href="login.php">Sign In</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <script>
+                var hambar=document.getElementById("ham-bar");
+                var ham=document.getElementById("ham-click");
+                ham.addEventListener("click",function(){
+                    if(hambar.style.display=="none"){
+                        hambar.style.display="block";
+                    }
+                    else if(hambar.style.display=="block"){
+                        hambar.style.display="none";
+                    }
+                })
+                window.onclick = function(event) {
+                    if (event.target == hambar) {
+                        hambar.style.display = "none";
+                    }
+                }
+
             </script>
 
             <?php
@@ -168,14 +218,16 @@
         <script>
             //script for responsivity
 
-            var mediaQuery = window.matchMedia("(max-width: 767px)");
+            var mediaQuery = window.matchMedia("(max-width: 696px)");
             var element = document.getElementById("set");
-
+            var ham=document.getElementById("btn");
             function handleViewportChange(mediaQuery) {
             if (mediaQuery.matches) {
                 element.style.display = "none";
+                ham.style.display = "block";
             } else {
                 element.style.display = "block"; // Or any other desired display value
+                ham.style.display = "none";
             }
             }
 

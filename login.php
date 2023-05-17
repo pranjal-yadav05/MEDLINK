@@ -2,9 +2,8 @@
     <head>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital@1&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <meta charset="UTF-8">
@@ -12,14 +11,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="styles.css" rel="stylesheet">
-        <link rel="icon" id="icon" href="/images/MedLinkAnimatedFavicon1.png">
+        <link rel="icon" id="icon" type="image/png" href="/images/MedLinkAnimatedFavicon1.png">
 
         <!--<script src="favicon.js"></script>-->
 
         <title> MedLink | Sign In </title>
     </head>
-
     <style>
+    @media (max-width:605px){
+        .box-input{
+            font-size:15px;
+        }
+        .box{
+            font-size:18px;
+        }
+    }
     .outer{
         display:flex;
         margin:auto;
@@ -77,32 +83,125 @@
         background-color:url("/images/background_new.jpg");
     }
     </style>
-
     <body>
         <div  class="head">
             <h1 class="login_logo"><a class="link" href="index.php">MEDLINK</a></h1>
         </div>
 
+        
+
         <div class="outer">
-            <form autocomplete="off" method="POST" action="" class="box">
+            <form autocomplete="off" method="post" class="box">
                 <div class="parent-box">
                     <div class="left">
                         Email : <br><br>
                         Password : <br><br>
                     </div>
                     <div class="right">
-                        <input type="text" name="email" autocomplete="email" placeholder=" Enter your email"><br><br>
-                        <input type="password" name="passwd" autocomplete="on" placeholder=" ********"><br><br>
+                        <input type="email" id="m1" name="mail" placeholder=" Enter your email" value="<?php echo isset($_POST['mail']) ? $_POST['mail'] : ''; ?>" autofocus><br><br>
+                        <input type="password" id="p1" name="passwd" placeholder=" ********" value="<?php echo isset($_POST['passwd']) ? $_POST['passwd'] : ''; ?>"><br><br>
                     </div>
                 </div>
 
                 <div class="bottom">
-                    <button type="submit" class="form-btn" name="submit">Submit</button><br><br><hr>
-                     <i>New here? Create an account <a href="#">here</a></i>
+                    <button type="submit" id="b1" class="form-btn" name="submit">Submit</button><br><br><hr>
+                     <i>New here? Create an account <a href="signup.php">here</a></i>
                 </div>
             </form>
+
+            <?php
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // Assuming you have a MySQL database connection already established
+                $servername = "localhost";
+                $username = "root";
+                $pass = "";
+                $dbname = "login_database";
+
+                // Get the email and password from the user
+                
+                if (isset($_POST['mail'])) {
+                    // Access the form data
+                    $email = $_POST['mail'];
+                    // Use the value as needed
+                } else {
+                    // Handle the case when the key doesn't exist
+                    echo "The key 'mail' is not present in the form data.";
+                }
+
+                if (isset($_POST['passwd'])) {
+                    // Access the form data
+                    $password = $_POST['passwd'];
+                    // Use the value as needed
+                } else {
+                    // Handle the case when the key doesn't exist
+                    echo "The key 'passwd' is not present in the form data.";
+                }
+    
+                /*
+                $email=$_POST['mail'];
+                $password=$_POST['passwd'];
+                */
+
+                // Create a connection to the database
+                $conn = mysqli_connect($servername,$username,$pass,$dbname);
+
+                // Check the connection
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+
+                // Prepare and execute the query
+                $stmt = $conn->prepare("SELECT * FROM login_data WHERE email = ? AND password = ?");
+                $stmt->bind_param("ss", $email, $password);
+                $stmt->execute();
+
+                // Fetch the result
+                $result = $stmt->get_result();
+
+                // Check if the email and password exist in the table
+                if ($result->num_rows > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $name = $row['fullname'];
+
+
+                    mysqli_query($conn,"INSERT INTO `session`(`name`) VALUES ('$name')");
+                    echo "<script>window.location.href='index.php'</script>";
+                } else {
+                    echo "<script>
+                        alert('Invalid Email or Password.');
+                        </script>";
+                }
+
+                // Close the prepared statement and the database connection
+                $stmt->close();
+                $conn->close();
+            }
+            ?>
+            
+
         </div>
     </body>
+    <script>
+        var mail=document.getElementById("m1");
+        var pass=document.getElementById("p1");
+        var button=document.getElementById("b1");
+
+        mail.addEventListener("keydown",function(event){
+    
+        if(event.keyCode==13){
+            event.preventDefault();
+            pass.focus();
+        }
+        })
+        pass.addEventListener("keydown",function(event){
+        if(event.keyCode==13){
+            event.preventDefault();
+            button.click();
+         }
+        })
+        
+
+    </script>
 </html>
 
 <!-- Commented Code begins...
