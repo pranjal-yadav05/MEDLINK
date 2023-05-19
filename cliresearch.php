@@ -1,13 +1,9 @@
+<?php session_start(); ?>
 <?php error_reporting(0); ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <meta charset="UTF-8">
@@ -23,16 +19,42 @@
     </head>
     <body>
         <div class="header">
-                <div class="title-container"><h1><a class="title-link" href="index.php">MEDLINK</a></h1></div>
-                <div id="set" class="set-menu">
-                    <ol class="set-menu">
-                        <!-- Inbox Label -->
-                        <li><i id="f25" class="fa fa-envelope" style="font-size:30px"></i></li>
-                        <!-- Archive Label -->
-                        <li><i id="f25" class="fa fa-inbox" style="font-size:34px"></i></li>
-                        <li><a type="button" id="userProfileId" class="login-modal-btn p-relative" aria-expanded="false" data-expandable="false" href="login.php">Sign In</a></li>
-                    </ol>
-                </div>
+            <div class="title-container">
+                <h1><a class="title-link" href="index.php">MEDLINK</a></h1>
+            </div>
+
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <div id="set" class="set-menu">
+                <ol class="set-menu">
+                    <!-- Inbox Label -->
+                    <li><i id="f25" class="fa fa-envelope" style="font-size:30px"></i></li>
+                    <!-- Archive Label -->
+                    <li><i id="f25" class="fa fa-inbox" style="font-size:34px"></i></li>
+                        <li>
+                            <?php
+                                if(isset($_SESSION['username'])) {
+                                  echo  
+                                      "<button type='submit' name='signout' id='userProfileId' class='login-modal-btn p-relative'>
+                                        Sign Out
+                                       </button>";
+                                }
+                                else {
+                                echo 
+                                    "<a type='button' id='userProfileId' class='login-modal-btn p-relative' aria-expanded='false' data-expandable='false' href='login.php'>
+                                        Sign In
+                                    </a>";
+                                }
+                            ?>
+                        </li>
+                 </ol>
+            </div>
+            </form>
+            <?php 
+                if(isset($_POST['signout'])){ 
+                    session_destroy(); 
+                    header("Location: ".$_SERVER['PHP_SELF']); 
+                }
+            ?>
         </div>
 
         <div class="nav-bar">
@@ -47,17 +69,30 @@
         </div>
 
         <div class="content">
-            <center><div class="plus" id="myBtn"><i class="fa fa-plus" style="font-size:50px"></i></div></center>
+            <?php
+                if(isset($_SESSION['username'])) {
+                    echo    '<center>
+                                <div class="plus" id="myBtn">
+                                    <i class="fa fa-plus" style="font-size:50px"></i>
+                                </div>
+                            </center>';
+                } else {
+                    echo '<br><center><strong style="font-family: Oswald;">'."Sign In to Add Post".'</strong></center><br>';
+                }
+            ?>
 
             <!-- The modal container -->
             <div id="myModal" class="modal">
                 <div class="design">
-                    <h2 class="post-header">Posting as <u>*username*</u><h2>
+                    <h2 class="post-header">Posting as 
+                        <?php
+                            echo $_SESSION['username'];
+                        ?>
+                    <h2>
                     <form class="new" method="POST">
-                        Name : <input type="text" name="name" autocomplete="on" placeholder="Enter your name" class="input"><br><br>
                         Title: <input type="text" name="title" autocomplete="off" placeholder="Enter post title" class="input"><br><br>
                         Post: <br><textarea type="text" name="post" rows="6" autocomplete="off" placeholder="Write your post" class="post"></textarea><br>
-                        <br><button type="submit" name="submit" class="form-btn" id="submit-btn" formaction="index.php">Submit</button>
+                        <br><button type="submit" name="submit" class="form-btn" id="submit-btn" formaction="cliresearch.php">Submit</button>
                     </form>
                 </div>
             </div>
@@ -106,7 +141,7 @@
                 if(isset($_POST['submit'])){
     
                     // Sanitize and retrieve form data
-                    $name = mysqli_real_escape_string($conn, $_POST['name']);
+                    $name = $_SESSION['username'];
                     $title = mysqli_real_escape_string($conn, $_POST['title']);
                     $post = mysqli_real_escape_string($conn, $_POST['post']);
                     $post = str_replace("\\r\\n", "\n", $post);
@@ -152,14 +187,10 @@
             <br>
             <div style="text-align: center;" class="scrolling-text-container">
                 <p class="scrolling-text"><font size="+2.5" style="font-family: Oswald; vertical-align: middle;">MedLink Visit Count &nbsp : &nbsp
-	            <script type="text/javascript" src="https://services.webestools.com/cpt_visits/23312-8-9.js"></script></font></p>
+	            <script type="text/javascript" src="https://services.webestools.com/cpt_visits/23317-10-9.js"></script></font></p>
             </div>
             
-            <strong>&#169; 2023 MedLink</strong></br>
-            <i>Credits </i>: Background Image by 
-            <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
-                Freepik
-            </a>
+            <strong>&#169; 2023 <a class="whlink" href="about_us.php">MedLink</a></strong>
         </footer>
 
         <script>

@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Oswald&display=swap');
 
 /* styles for screens smaller than 600px */
 @media (max-width: 600px) {
@@ -34,21 +36,15 @@ html, body {
 }
 
 body {
-    /*background-image: url("/images/tablet-medical-equipment.jpg");
-    
-    background-color: cadetblue;*/background-image: url("/images/healthcare.jpg");
+    background-image: url("/images/healthcare.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     font-family: 'Poppins', sans-serif;
-    /*font-family: "Open Sans", Arial, sans-serif;
-    font-family: Arial, Helvetica, sans-serif;*/
     min-height: 98vh;
     display: flex;
     flex-direction: column;
-    
-    /*object-fit: cover;*/
 }
 
 /* Set the color of the scrollbar thumb */
@@ -85,79 +81,8 @@ body {
     margin:0 5px;
 }
 
-/*Pranjal's addition*/
-
-@media (max-width: 696px) {
-    nav{
-    display: flex;
-    overflow-x: scroll;
-      
-    }
-    .Button{
-    padding:5px;
-    }
-}
-  
-.Button1{
-    border:2px solid black;
-    margin-right: -2px;
-    margin-left: -2px;
-    background:none;
-    /*font-size: 2.5vh;
-     font-style: oblique;*/
-    padding:0px;
-    color:white;
-}
-  
-.ham-modal{
-    z-index: 1;
-    color:white;
-    background-color: rgb(0,0,0,0.4);
-    width:100%;
-    height:100%;
-    left: 0%;
-    top: 0%;
-    position: fixed;
-}
-
-.ham-design{
-    background-color: black;
-    color:white;
-    width:fit-content;
-    height:100%;
-}
-  
-ul li{
-    list-style: none;
-    margin:10px;
-}
-ul li a{
-    text-decoration: none;
-    color:white;
-}
-
-ul{
-    padding:20px;
-}
-
-.ham_btn{
-    background-color: black;
-    border:none;
-    max-width: fit-content;
-    vertical-align: middle;
-}
-  
-.ham {
-    width: 33px;
-    height: 33px;
-    color: white;
-    margin-left:15px;
-}
-/*ends*/
-
 .title-container {
     margin-left: auto;
-    /*margin: 0 auto;*/
     align-items: center;
     width: 100vw;
     position: absolute;
@@ -190,16 +115,6 @@ h1 {
     display: flex;
     align-items: center;
 }
-
-/*.set-menu li {
-  float: left;
-  margin-right: 20px; /* Add some spacing between elements 
-
-
-.set-menu li {
-  display: inline-block;
-  margin-right: 20px;
-}}*/
 
 dl, ol, ul {
     margin-top: 0;
@@ -234,75 +149,6 @@ dl, ol, ul {
     position: relative;
 }
 
-/*.header {
-    background-image: url("/images/titleHeader.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    height: 10vh;
-    position: relative;
-    text-align: right;
-}
-
-.header i {
-    margin: 0 5px;
-}
-
-.title-container {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 8vh;
-    margin: 0;
-    text-align: center;
-}
-
-.set-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-}
-
-.set-menu li {
-    margin-right: 20px;
-}
-
-#f25 {
-    color: white;
-}
-
-.fa-inbox {
-    margin-top: 200px;
-}
-
-.login-modal-btn {
-    cursor: pointer;
-    outline: 0px;
-    background-color: #273239;
-    color: white;
-    font-family: var(--font-primary);
-    padding: 8px 27px;
-    border-radius: 5px;
-    font-size: 14px;
-    text-decoration: none !important;
-    border: 0px;
-    white-space: nowrap;
-}
-
-.p-relative {
-    position: relative;
-}*/
-
 .nav-bar {
     font-family: 'Oswald', sans-serif;
     background-color: black;
@@ -327,6 +173,13 @@ dl, ol, ul {
     padding: 10px;
     color: white;
     display: inline-block;
+
+    /* Special CSS for Hamburger Menu Border */
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .navElement:hover {
@@ -342,7 +195,6 @@ dl, ol, ul {
 
 .content {
     padding-top: 10px;
-    /*font-family: 'Open sans', IBM Plex Sans, sans-serif;*/
     font-family: 'Poppins', sans-serif;
     margin-left: 10px;
     margin-right: 10px;   
@@ -394,14 +246,12 @@ dl, ol, ul {
 .post-header {
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    /*font-family: 'Open Sans', IBM Plex Sans, sans-serif;*/
 }
 
 .new {
     text-align: center;
     font-size: 3.5vh;
     font-family: 'Poppins', sans-serif;
-    /*font-family: 'Open Sans', IBM Plex Sans, sans-serif;*/
 }
 
 .input, .post {
@@ -441,26 +291,10 @@ dl, ol, ul {
     cursor: pointer;
 }
 
-/* Style the button/link to open the modal 
-#myBtn {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
-}*/
-
 .fetch {
     border: 2px solid black;
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
-    /*font-family: 'Open sans', IBM Plex Sans, sans-serif;*/
     padding: 5px 5px;
     background-color: black;
     opacity: 0.8;

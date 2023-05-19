@@ -1,13 +1,9 @@
+<?php session_start(); ?>
 <?php error_reporting(0); ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <meta charset="UTF-8">
@@ -24,24 +20,46 @@
     <body>
         <div class="header">
             <div class="title-container">
-                <h1 class="title"><a class="title-link" href="index.php">MEDLINK</a></h1>
+                <h1><a class="title-link" href="index.php">MEDLINK</a></h1>
             </div>
+
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div id="set" class="set-menu">
                 <ol class="set-menu">
                     <!-- Inbox Label -->
                     <li><i id="f25" class="fa fa-envelope" style="font-size:30px"></i></li>
                     <!-- Archive Label -->
                     <li><i id="f25" class="fa fa-inbox" style="font-size:34px"></i></li>
-                    <!-- Authentication Label -->
-                    <li><a type="button" id="userProfileId" class="login-modal-btn p-relative" aria-expanded="false" data-expandable="false" href="login.php">Sign In</a></li>
-                </ol>
+                        <li>
+                            <?php
+                                if(isset($_SESSION['username'])) {
+                                  echo  
+                                      "<button type='submit' name='signout' id='userProfileId' class='login-modal-btn p-relative'>
+                                        Sign Out
+                                       </button>";
+                                }
+                                else {
+                                echo 
+                                    "<a type='button' id='userProfileId' class='login-modal-btn p-relative' aria-expanded='false' data-expandable='false' href='login.php'>
+                                        Sign In
+                                    </a>";
+                                }
+                            ?>
+                        </li>
+                 </ol>
             </div>
+            </form>
+            <?php 
+                if(isset($_POST['signout'])){ 
+                    session_destroy(); 
+                    header("Location: ".$_SERVER['PHP_SELF']); 
+                }
+            ?>
         </div>
 
         <div class="nav-bar">
             <nav>
-                &nbsp &nbsp
-                <button id="btn" class="Button1"><img id="ham-click" class="ham" src="./images/burger-menu.png"></button>    
+                &nbsp &nbsp    
                 <a class="anchor navElement" href="index.php">Home</a>
                 <a class="anchor navElement" href="patientcare.php">Patient Care</a>
                 <a class="anchor navElement" href="cliresearch.php">Clinical Research</a>
@@ -51,36 +69,29 @@
         </div>
 
         <div class="content">
-            <center><div class="plus" id="myBtn"><i class="fa fa-plus" style="font-size:50px"></i></div></center>
+            <?php
+                if(isset($_SESSION['username'])) {
+                    echo    '<center>
+                                <div class="plus" id="myBtn">
+                                    <i class="fa fa-plus" style="font-size:50px"></i>
+                                </div>
+                            </center>';
+                } else {
+                    echo '<br><center><strong style="font-family: Oswald;">'."Sign In to Add Post".'</strong></center><br>';
+                }
+            ?>
 
             <!-- The modal container -->
             <div id="myModal" class="modal">
                 <div class="design">
-                <h2 class="post-header">Posting as 
-                        
-                        
-                        
+                    <h2 class="post-header">Posting as 
                         <?php
-                        $conn = mysqli_connect("localhost","root","","login_database");
-                        $result = mysqli_query($conn,"
-                        SELECT name
-                        FROM session
-                        ORDER BY id DESC
-                        LIMIT 1
-                        ");
-                        
-                        $row = mysqli_fetch_assoc($result);
-                        global $user_name;
-                        $user_name = $row['name'];
-                        echo $user_name;
+                            echo $_SESSION['username'];
                         ?>
-                        
-                        
                     <h2>
                     <form class="new" method="POST">
-                        <!-- Name : <input type="text" name="name" placeholder="Enter your name" class="input"><br><br>-->
-                        Title: <input type="text" name="title" placeholder="Enter post title" class="input"><br><br>
-                        Post: <br><textarea type="text" name="post" rows="6" placeholder="Write your post" class="post"></textarea><br>
+                        Title: <input type="text" name="title" autocomplete="off" placeholder="Enter post title" class="input"><br><br>
+                        Post: <br><textarea type="text" name="post" rows="6" autocomplete="off" placeholder="Write your post" class="post"></textarea><br>
                         <br><button type="submit" name="submit" class="form-btn" id="submit-btn" formaction="index.php">Submit</button>
                     </form>
                 </div>
@@ -110,35 +121,6 @@
                 }
             </script>
 
-            <div id="ham-bar" style="display:none" class="ham-modal">
-                <div id="des1" class="ham-design">
-                    <ul>
-                        <li>Inbox</li>
-                        <li>Messages</li>
-                        <li><a href="login.php">Sign In</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <script>
-                var hambar=document.getElementById("ham-bar");
-                var ham=document.getElementById("ham-click");
-                ham.addEventListener("click",function(){
-                    if(hambar.style.display=="none"){
-                        hambar.style.display="block";
-                    }
-                    else if(hambar.style.display=="block"){
-                        hambar.style.display="none";
-                    }
-                })
-                window.onclick = function(event) {
-                    if (event.target == hambar) {
-                        hambar.style.display = "none";
-                    }
-                }
-
-            </script>
-
             <?php
                 // Connection parameters
                 $servername = "localhost";
@@ -156,14 +138,14 @@
                 //echo "Connected successfully";
 
                 // Check if form has been submitted
-                if(isset($_POST['submit'])){
+                if(isset($_POST['submit'])) {
     
                     // Sanitize and retrieve form data
-                    $name = mysqli_real_escape_string($conn, $_POST['name']);
+                    $name = $_SESSION['username'];
                     $title = mysqli_real_escape_string($conn, $_POST['title']);
                     $post = mysqli_real_escape_string($conn, $_POST['post']);
                     $post = str_replace("\\r\\n", "\n", $post);
-                    
+
                     date_default_timezone_set('Asia/Kolkata');
                     $date = date("Y-m-d H:i:s");
 
@@ -205,29 +187,23 @@
             <br>
             <div style="text-align: center;" class="scrolling-text-container">
                 <p class="scrolling-text"><font size="+2.5" style="font-family: Oswald; vertical-align: middle;">MedLink Visit Count &nbsp : &nbsp
-	            <script type="text/javascript" src="https://services.webestools.com/cpt_visits/23312-8-9.js"></script></font></p>
+	            <script type="text/javascript" src="https://services.webestools.com/cpt_visits/23317-10-9.js"></script></font></p>
             </div>
             
-            <strong>&#169; 2023 MedLink</strong></br>
-            <i>Credits </i>: Background Image by 
-            <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
-                Freepik
-            </a>
+            <strong>&#169; 2023 <a class="whlink" href="about_us.php">MedLink</a></strong>
         </footer>
 
         <script>
             //script for responsivity
 
-            var mediaQuery = window.matchMedia("(max-width: 696px)");
+            var mediaQuery = window.matchMedia("(max-width: 767px)");
             var element = document.getElementById("set");
-            var ham=document.getElementById("btn");
+
             function handleViewportChange(mediaQuery) {
             if (mediaQuery.matches) {
                 element.style.display = "none";
-                ham.style.display = "block";
             } else {
                 element.style.display = "block"; // Or any other desired display value
-                ham.style.display = "none";
             }
             }
 
@@ -240,6 +216,29 @@
 <!-- Commented Code begins...
 'localhost', 'root', '12345678', 'MedLink'
 'sql105.epizy.com', 'epiz_34148914', 'de2tDe3J2YEt', 'epiz_34148914_medlink'
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
+                            /*// Connection parameters
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "12345678";
+                            $database = "MedLink";
+
+                            // Establish connection to the database
+                            $conn = mysqli_connect($servername, $username, $password, $database);
+
+                            $result = mysqli_query($conn, "SELECT name FROM session ORDER BY id DESC LIMIT 1");
+
+                            if ($result) {
+                                $row = mysqli_fetch_assoc($result);
+                                $user_name = $row['name'];
+                                echo $user_name;
+                            }
+
+                            mysqli_close($conn);*/
+                            
+                            </br>
+            <i>Credits </i>: Background Image by 
+            <a class="whlink" href="https://www.freepik.com/free-photo/tablet-medical-equipment_1315149.htm#page=25&query=medical%20phone&position=20&from_view=keyword&track=ais">
+                Freepik
+            </a>
     ...Commented Code ends-->

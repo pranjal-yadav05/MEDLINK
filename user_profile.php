@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
      <head>
@@ -5,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Profile Page</title>
         <link rel="stylesheet" href="styles.css">
-        <link rel="icon" id="icon" type="image/png" href="/images/MedLinkAnimatedFavicon1.png">
+        <link rel="icon" id="icon" href="/images/MedLinkAnimatedFavicon1.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
@@ -15,7 +17,7 @@ body
 {
     margin: 0;
     padding: 0;
-    background-image: url(healthcare.jpg);
+    background-image: url("/images/healthcare.jpg");
     background-size: cover;
 }
 
@@ -27,7 +29,7 @@ body
     bottom: 80px;
     border: 5px solid gray;
     border-radius: 50%;
-    background: url('images/photo.png');
+    background: url("/images/photo.png");
     background-size: 100% 100%;
     margin: 100px auto;
     overflow: hidden;
@@ -124,8 +126,15 @@ button :hover
         <div class="wrapper">
         <input type="file" class="my_file">
         </div>
-        <h1>User Name</h1>
-        <div class="content"></div>
-        <a href=""><button id="change">Change Information</button></a>
+        
+        <br><br><br>
+        <div class="content">
+            <center>
+                Username: 
+                <?php
+                    echo $_SESSION['username'];
+                ?>
+            </center>
+        </div><a href=""><button id="change">Change Information</button></a>
     </body>
 </html>
