@@ -83,11 +83,13 @@
                         Username : <br><br>
                         Email : <br><br>
                         Password : <br><br>
+                        Confirm Password : <br><br>
                     </div>
                     <div class="right">
                         <input type="text" id="u1" name="username" placeholder=" Enter new username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>" autofocus><br><br>
-                        <input type="email" id="m1" name="mail" placeholder=" Enter your email" value="<?php echo isset($_POST['mail']) ? $_POST['mail'] : ''; ?>" autofocus><br><br>
+                        <input type="email" id="m1" name="mail" placeholder=" Enter your email" value="<?php echo isset($_POST['mail']) ? $_POST['mail'] : ''; ?>"><br><br>
                         <input type="password" id="p1" name="passwd" placeholder=" ********" value="<?php echo isset($_POST['passwd']) ? $_POST['passwd'] : ''; ?>"><br><br>
+                        <input type="password" id="p2" name="pVerif" placeholder=" ********" value="<?php echo isset($_POST['pVerif']) ? $_POST['pVerif'] : ''; ?>"><br><br>
                     </div>
                 </div>
 
@@ -128,9 +130,23 @@
                     }
 
                     if (isset($_POST['passwd'])) {
-                        // Access the form data
-                        $passwd = $_POST['passwd'];
-                        // Use the value as needed
+                        if (isset($_POST['pVerif'])) {
+                            if($_POST['passwd'] == $_POST['pVerif']) {
+                                // Access the form data
+                                $passwd = $_POST['passwd'];
+                                // Use the value as needed
+                            } else {
+                                // Handle the case when both entries of password do not match
+                                echo "<script>
+                                        alert('Password entries do not match');
+                                    </script>";
+
+                            }
+                        } else {
+                            // Handle the case when the 'pVerif' key doesn't exist / is not present in the form data
+                            $passwd = '';
+                            echo "Kindly resubmit the form";
+                        }
                     } else {
                         // Handle the case when the 'passwd' key doesn't exist / is not present in the form data
                         $passwd = '';
@@ -172,25 +188,31 @@
                             </script>";
                         } else {
                             // Proceed with sign-up
-
-                            // Prepare and execute the query
-                            $signupQuery = "INSERT INTO login_data (username, email, password) VALUES (?, ?, ?)";
-                            $signupStmt = $conn->prepare($signupQuery);
-                            $signupStmt->bind_param("sss", $username, $email, $passwd);
-                            $signupStmt->execute();
-
-                            // Check if the sign-up was successful
-                            if ($signupStmt->affected_rows > 0) {
-                                $_SESSION['username'] = $username;
-                                echo "<script>window.location.href='index.php'</script>";
-                            } else {
+                            if($username == '' || $email == '' || $passwd == '')
+                            {
                                 echo "<script>
-                                    alert('Sign-up failed. Please try again.');
-                                </script>";
-                            }
+                                        alert('Enter your credentials again.');
+                                    </script>";
+                            } else {
+                                // Prepare and execute the query
+                                $signupQuery = "INSERT INTO login_data (username, email, password) VALUES (?, ?, ?)";
+                                $signupStmt = $conn->prepare($signupQuery);
+                                $signupStmt->bind_param("sss", $username, $email, $passwd);
+                                $signupStmt->execute();
 
-                            // Close the sign-up statement
-                            $signupStmt->close();
+                                // Check if the sign-up was successful
+                                if ($signupStmt->affected_rows > 0) {
+                                    $_SESSION['username'] = $username;
+                                    echo "<script>window.location.href='index.php'</script>";
+                                } else {
+                                    echo "<script>
+                                        alert('Sign-up failed. Please try again.');
+                                    </script>";
+                                }
+
+                                // Close the sign-up statement
+                                $signupStmt->close();
+                            }
                         }
                     }
 
@@ -212,6 +234,7 @@
         var uName = document.getElementById("u1");
         var mail = document.getElementById("m1");
         var pass = document.getElementById("p1");
+        var pass2 = document.getElementById("p2");
         var button = document.getElementById("b1");
 
         uName.addEventListener("keydown", function(event) {
@@ -233,10 +256,16 @@
         pass.addEventListener("keydown", function(event) {
         if(event.keyCode == 13){
             event.preventDefault();
-            button.click();
+            pass2.focus();
          }
         })
 
+        pass2.addEventListener("keydown", function(event) {
+        if(event.keyCode == 13){
+            event.preventDefault();
+            button.click();
+         }
+        })
     </script>
 </html>
 

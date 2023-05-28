@@ -139,24 +139,29 @@
 
                 // Check if form has been submitted
                 if(isset($_POST['submit'])) {
-    
-                    // Sanitize and retrieve form data
-                    $name = $_SESSION['username'];
-                    $title = mysqli_real_escape_string($conn, $_POST['title']);
-                    $post = mysqli_real_escape_string($conn, $_POST['post']);
-                    $post = str_replace("\\r\\n", "\n", $post);
+                    if ($_POST['title'] == '' || $_POST['post'] == '') {
+                        echo "<script>
+                                alert('Type something to post');
+                              </script>";
+                    } else {
+                        // Sanitize and retrieve form data
+                        $name = $_SESSION['username'];
+                        $title = mysqli_real_escape_string($conn, $_POST['title']);
+                        $post = mysqli_real_escape_string($conn, $_POST['post']);
+                        $post = str_replace("\\r\\n", "\n", $post);
 
-                    date_default_timezone_set('Asia/Kolkata');
-                    $date = date("Y-m-d H:i:s");
+                        date_default_timezone_set('Asia/Kolkata');
+                        $date = date("Y-m-d H:i:s");
 
-                    // Prepare the SQL query
-                    $stmt = $conn->prepare("INSERT INTO posts (post_name, post_user, post, post_date) VALUES (?, ?, ?, ?)");
+                        // Prepare the SQL query
+                        $stmt = $conn->prepare("INSERT INTO posts (post_name, post_user, post, post_date) VALUES (?, ?, ?, ?)");
 
-                    // Bind the sanitized input to the prepared statement
-                    $stmt->bind_param("ssss", $title, $name, $post, $date);
+                        // Bind the sanitized input to the prepared statement
+                        $stmt->bind_param("ssss", $title, $name, $post, $date);
 
-                    // Execute the statement to insert the data into the table
-                    $stmt->execute();
+                        // Execute the statement to insert the data into the table
+                        $stmt->execute();
+                    }   
                 }
 
                 // Retrieve data from the database

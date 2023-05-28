@@ -129,39 +129,44 @@
                 // Check the connection
                 if ($conn->connect_error) {
                   die("Connection failed: " . $conn->connect_error);
-                }
-
-                session_start();
-
-
-                // Prepare and execute the query
-                $stmt = $conn->prepare("SELECT * FROM login_data WHERE email = ? AND password = ?");
-                $stmt->bind_param("ss", $email, $passwd);
-                $stmt->execute();
-
-                // Fetch the result
-                $result = $stmt->get_result();
-
-                // Check if the email and password exist in the table
-                if ($result->num_rows > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                    $name = $row['email'];
-
-                    $results=mysqli_query($conn,"SELECT email FROM login_data WHERE email = '$email'");
-                    $rows=$results;
-                    $user_name=$row['username'];
-                    $_SESSION['username'] = $user_name;
-                   // mysqli_query($conn,"INSERT INTO `session`(`name`) VALUES ('$name')");
-                    echo "<script>window.location.href='index.php'</script>";
                 } else {
-                    echo "<script>
-                        alert('Invalid Email or Password.');
-                        </script>";
-                }
+                    session_start();
 
-                // Close the prepared statement and the database connection
-                $stmt->close();
-                $conn->close();
+                    // Prepare and execute the query
+                    $stmt = $conn->prepare("SELECT * FROM login_data WHERE email = ? AND password = ?");
+                    $stmt->bind_param("ss", $email, $passwd);
+                    $stmt->execute();
+
+                    // Fetch the result
+                    $result = $stmt->get_result();
+
+                    if($email == '' || $passwd == '') {
+                        echo "<script>
+                                alert('Enter your credentials again.');
+                              </script>";
+                    } else {
+                        // Check if the email and password exist in the table
+                        if ($result->num_rows > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            $name = $row['email'];
+
+                            $results=mysqli_query($conn,"SELECT email FROM login_data WHERE email = '$email'");
+                            $rows=$results;
+                            $user_name=$row['username'];
+                            $_SESSION['username'] = $user_name;
+                            // mysqli_query($conn,"INSERT INTO `session`(`name`) VALUES ('$name')");
+                            echo "<script>window.location.href='index.php'</script>";
+                        } else {
+                            echo "<script>
+                                    alert('Invalid Email or Password.');
+                                  </script>";
+                        }
+                    }                    
+
+                    // Close the prepared statement and the database connection
+                    $stmt->close();
+                    $conn->close();
+                }
             }
             ?>
             
